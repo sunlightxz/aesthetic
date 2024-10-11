@@ -1,5 +1,6 @@
 import Image from "next/image";
 import localFont from "next/font/local";
+import { useState } from 'react';
 import Hero from "./components/Hero";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
@@ -8,6 +9,8 @@ import Projects from "./components/Projects";
 import Explore from "./components/Explore";
 
 export default function Home() {
+  const [showGif, setShowGif] = useState(false);
+
   return (
     <div className="relative">
       <div className="
@@ -16,8 +19,8 @@ export default function Home() {
       "></div>
       <div className="absolute inset-0 z-10 bg-black opacity-90"></div>
       <div className="relative z-20">
-        <Nav/>
-        <Hero/>
+        <Nav setShowGif={setShowGif} />
+        <Hero showGif={showGif} />
         <About/>
         <Projects/>
         <Explore/>

@@ -3,8 +3,9 @@ import Link from 'next/link'
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 
-const Nav = () => {
+const Nav = ({setShowGif} ) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   const linksRef = useRef([]);
   const menuRef = useRef(null);
 
@@ -12,6 +13,7 @@ const Nav = () => {
     setIsMenuOpen(!isMenuOpen)
   }
 
+ 
   useEffect(() => {
     if (isMenuOpen) {
       // Prevent scrolling when menu is open
@@ -46,25 +48,14 @@ const Nav = () => {
     <Link 
                 href="/" 
                 className="
-                  block hover:text-gray-300 text-[28px] leading-5 
-                  transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.075,0.82,0.165,1)]
-                  group-hover:opacity-0 group-hover:translate-y-[120%]
+                   hover:text-gray-300 text-[28px] leading-5 
                 "
+                onMouseEnter={() => setShowGif(true)}
+                onMouseLeave={() => setShowGif(false)}
               >
           Say Hello
           </Link>
-              <Link 
-                href="/" 
-                className="
-                  block hover:text-gray-300 text-[28px] leading-5 
-                  absolute top-0 left-0 opacity-0 
-                  transition-all duration-500 
-                  translate-y-[-120%] group-hover:translate-y-0
-                  group-hover:opacity-100
-                "
-              >
-                Aesthetic
-              </Link>
+            
     </div>
         
         {/* Hamburger menu for mobile */}

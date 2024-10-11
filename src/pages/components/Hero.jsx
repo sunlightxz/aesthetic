@@ -1,9 +1,10 @@
 import React from "react";
+import Image from 'next/image';
 
-const Hero = () => {
+const Hero = ({showGif}) => {
   return (
     <div className="h-screen flex flex-col items-center  mt-[60px] border-b-[#C7BCBC] border-b">
-      <div className=" lg:pt-0 pt-[20vw] lg:pb-[20vw] pb-[16vw] max-w-7xl px-4 items-center flex flex-col ">
+      <div className="relative lg:pt-0 pt-[20vw] lg:pb-[20vw] pb-[16vw] max-w-7xl px-4 items-center flex flex-col ">
         <h2 className="text-[calc(2.8rem + 5.22vw)]">
           {" "}
           <svg
@@ -20,6 +21,18 @@ const Hero = () => {
             />
           </svg>
         </h2>
+       {
+        showGif && (
+          <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-50">
+          <Image src="/giphy.webp" // Update the path to your image
+            alt="Hovered Image"
+            width={500}
+            height={300}
+            className="transition-all duration-500 ease-in-out"
+          />
+        </div>
+        )
+       }
       </div>
 
       <div className="flex justify-center items-center ">
@@ -29,7 +42,7 @@ const Hero = () => {
               Casablanca,Morocco Local Time - 4:41 PM
             </span>
           </div>
-          <div className="lg:max-w-[16.66%] md:max-w-[33.33%] max-w-[0 0 100%] flex-[0 0 100%] md:flex-[0 0 33.33%] lg:flex-[0 0 16.66%] md:ml-[7%] lg:mb-0 mb-5">
+          <div className=" lg:max-w-[16.66%] md:max-w-[33.33%] max-w-[0 0 100%] flex-[0 0 100%] md:flex-[0 0 33.33%] lg:flex-[0 0 16.66%] md:ml-[7%] lg:mb-0 mb-5">
             <span className="text-2xl">
               Tuesday <br /> Otober 8, 2024
             </span>

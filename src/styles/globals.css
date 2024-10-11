@@ -25,3 +25,14 @@ body {
     text-wrap: balance;
   }
 }
+
+
+.hero-imgs {
+  transition: transform 0.3s ease;
+}
+
+
+
+
+
+
