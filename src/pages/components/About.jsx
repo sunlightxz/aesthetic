@@ -2,14 +2,34 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import Image from 'next/image';
+import Lenis from "@studio-freight/lenis";
 
 // Register ScrollTrigger with GSAP
 gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
-  const imgRef = useRef(null);
+  const imgContainer = useRef(null);
 
-
+  useEffect(()=> {
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: ".website-content",
+        start: "top top",
+        end: "+=170%",
+        scrub: 1,
+      },
+    })
+    .to(".img-holder", {
+      scale: 1,
+      rotate: 0,
+      ease: "power2.inOut",
+     
+    })
+    .to(".img-holder img", {
+        scale: 1,
+        ease: "power2.inOut",
+      })
+  }, []);
 
   return (
     <div className="h-screen relative w-screen flex flex-col items-center">
@@ -24,11 +44,9 @@ const About = () => {
         </div>
       </section>
 
-      <section className="h-screen">
-        <div
-          className="hero-imgs bg-[url('/main.png')] bg-cover bg-center h-screen"
-        >
-         
+      <section className="website-content h-screen w-full z-10">
+        <div className="img-holder " ref={imgContainer}>
+          <img className="object-cover w-full h-full " src='Main.png'   alt="hero.jpg" />
         </div>
       </section>
     </div>
