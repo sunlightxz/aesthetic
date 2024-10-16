@@ -40,7 +40,7 @@ body {
   display: flex;
   align-items: center; 
   justify-content: center; 
-  transform: scale(1.2); /* Adjusted initial scale */
+  transform: scale(1.3); /* Adjusted initial scale */
 }
 
 

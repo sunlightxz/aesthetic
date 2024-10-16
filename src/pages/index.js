@@ -6,7 +6,6 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import About from "./components/About";
 import Projects from "./components/Projects";
-import Explore from "./components/Explore";
 
 export default function Home() {
   const [showGif, setShowGif] = useState(false);
@@ -23,7 +22,7 @@ export default function Home() {
         <Hero showGif={showGif} />
         <About/>
         <Projects/>
-        <Explore/>
+     
         <Footer/>
       </div>
     </div>
