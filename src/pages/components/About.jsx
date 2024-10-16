@@ -23,6 +23,7 @@ const About = () => {
         end: "200% top", // Adjust this based on your content length
         scrub: true,
         pin: true,
+        markers:true,
       },
     });
 
@@ -30,11 +31,11 @@ const About = () => {
     tl.to(firstSectionRef.current, { y: '-100%', ease: "power2.inOut", duration: 1 })
       .fromTo(
         imgHolderRef.current,
-        { scale: 1.5, ease: "power2.inOut" },
-        { scale: 1, ease: "power2.inOut",  },
-        0
+        { scale: 1.4, ease: "power2.inOut" },
+        { scale: 1, ease: "power2.inOut", duration:1 },
+      0
       )
-      .to(imgHolderRef.current, { width: "50%", duration: 1 });
+      .to(imgHolderRef.current, { width: "50%", duration: 1.3,ease: "power2.inOut"} );
 
     // Horizontal timeline starts when imgHolder reaches 50% width
     const horizontalTl = gsap.timeline({
@@ -43,14 +44,20 @@ const About = () => {
         start: "bottom+=50% top", // Adjust to start when imgHolder width is 50%
         end: "bottom+=150% top", // Adjust based on how long you want the horizontal scroll
         scrub: true,
-        markers :true,
+        markers:true,
       },
     });
 
-    horizontalTl.to(scrollContainer.current, { 
-      x: "-100vw", // Translate to horizontal scroll
+    horizontalTl
+    .to(horizontalSectionRef.current, { 
+      x: "-800px", // Move imgHolder slightly left
       ease: "power2.inOut",
-      duration: 1 
+      duration: 1.3 
+    })
+    .to(scrollContainer.current, { 
+      x: "-400vw", // Translate to horizontal scroll
+      ease: "power2.inOut",
+      duration: 1.3
     })
     .to(imgHolderRef.current, { 
       x: "-15%", // Move imgHolder slightly left
@@ -87,18 +94,18 @@ const About = () => {
 
             {/* Second Section (Image with Scroll Animation) */}
             <section
-              ref={imgHolderRef}
-              className="flex items-center justify-center w-screen h-screen transition-all duration-500"
+              
+              className=" w-screen h-screen transition-all duration-500"
             >
               {/* Background image controlled by CSS */}
-              <div className="img-holder"></div>
+              <div className="img-holder" ref={imgHolderRef}></div>
             </section>
           </div>
 
           {/* Horizontal Scroll Section */}
           <div ref={horizontalSectionRef} className="flex h-screen w-[170vw]">
             {/* Horizontal scroll items */}
-            <div className="w-screen h-full flex-shrink-0 flex items-center justify-center bg-red-300">
+            <div className="w-screen h-full flex-shrink-0 flex items-center justify-center bg-white">
               <h2 className="text-3xl">Horizontal Section 1</h2>
             </div>
             <div className="w-screen h-full flex-shrink-0 flex items-center justify-center bg-blue-300">
