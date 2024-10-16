@@ -13,44 +13,52 @@ const About = () => {
   const firstSectionRef = useRef(null);
 
   useEffect(() => {
-
-    const lenis = new Lenis({
-      smooth: true,
-      duration: 1, // Adjust smoothness duration as needed
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Smooth easing
-    });
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-
-    // Lenis updates GSAP ScrollTrigger on scroll
-    lenis.on("scroll", ScrollTrigger.update);
+  
 
     // Create the scroll animation using GSAP and ScrollTrigger
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: scrollContainer.current,
         start: "top top",
-        end: "150% top",
+        end: "200% top", // Adjust this based on your content length
         scrub: true,
-        pin: true, // Pin the scrollContainer while scrolling
+        pin: true,
       },
     });
 
-    // Animation to move the first section up
-    tl.to(firstSectionRef.current, { y: '-100%',ease: "power2.inOut", duration: 1 })
-    .fromTo(
-      imgHolderRef.current,
-      { scale: 1.5, ease: "power2.inOut" },
-      { scale: 1,  ease: "power2.inOut" },0
-    )
-    .to(imgHolderRef.current, { width: "50%",ease: "power2.inOut",duration: 1});
+    // Animation for the first section and image holder
+    tl.to(firstSectionRef.current, { y: '-100%', ease: "power2.inOut", duration: 1 })
+      .fromTo(
+        imgHolderRef.current,
+        { scale: 1.5, ease: "power2.inOut" },
+        { scale: 1, ease: "power2.inOut",  },
+        0
+      )
+      .to(imgHolderRef.current, { width: "50%", duration: 1 });
+
+    // Horizontal timeline starts when imgHolder reaches 50% width
+    const horizontalTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: imgHolderRef.current,
+        start: "bottom+=50% top", // Adjust to start when imgHolder width is 50%
+        end: "bottom+=150% top", // Adjust based on how long you want the horizontal scroll
+        scrub: true,
+        markers :true,
+      },
+    });
+
+    horizontalTl.to(scrollContainer.current, { 
+      x: "-100vw", // Translate to horizontal scroll
+      ease: "power2.inOut",
+      duration: 1 
+    })
+    .to(imgHolderRef.current, { 
+      x: "-15%", // Move imgHolder slightly left
+      ease: "power2.inOut",
+      duration: 1 
+    }, 0);
+
     return () => {
-      lenis.destroy(); // Clean up Lenis on component unmount
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
@@ -59,7 +67,7 @@ const About = () => {
     <div ref={scrollContainer} className="w-[600vw] relative overflow-hidden">
       <div className="h-screen w-screen relative">
         <div className="flex w-[270vw]">
-          <div className="w-screen h-screen relative">
+          <div className="w-screen h-screen relative overflow-hidden">
             <section
               ref={firstSectionRef}
               className="h-[70vh] absolute left-0 top-0 z-10 first-section w-screen border-b border-[#C7BCBC]"
