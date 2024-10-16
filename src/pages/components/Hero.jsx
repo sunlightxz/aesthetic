@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const Hero = ({showGif}) => {
   return (
-    <div className="h-screen flex flex-col items-center  mt-[60px] border-b-[#C7BCBC] border-b">
+    <div className="h-screen w-screen flex flex-col items-center  relative z-40 mt-[60px] border-b-[#C7BCBC] border-b overflow-hidden">
       <div className="relative lg:pt-0 pt-[20vw] lg:pb-[20vw] pb-[16vw] max-w-7xl px-4 items-center flex flex-col ">
         <h2 className="text-[calc(2.8rem + 5.22vw)]">
           {" "}
