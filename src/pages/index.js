@@ -17,7 +17,7 @@ export default function Home() {
         bg-[url('/bg.gif')] bg-cover bg-center bg-no-repeat opacity-60
       "></div>
       <div className="absolute inset-0 z-10 bg-black opacity-90"></div>
-      <div className="relative z-20">
+      <div className="relative z-20 w-screen overflow-hidden">
         <Nav setShowGif={setShowGif} />
         <Hero showGif={showGif} />
         <About/>

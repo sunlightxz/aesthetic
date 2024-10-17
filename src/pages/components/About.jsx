@@ -3,6 +3,8 @@ import { gsap } from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Lenis from "@studio-freight/lenis";
 import Products from "../wrapped-component/Products";
+import Explore from "../wrapped-component/Explore";
+import Plus from "../wrapped-component/Plus";
 
 // Register ScrollTrigger with GSAP
 gsap.registerPlugin(ScrollTrigger);
@@ -22,7 +24,6 @@ const About = () => {
         end: "200% top", // Adjust this based on your content length
         scrub: true,
         pin: true,
-        markers: true,
       },
     });
 
@@ -51,7 +52,6 @@ const About = () => {
         start: "top+=100% center", // Adjust based on when you want to start
         end: "top+=200% center", // Adjust based on how long you want the horizontal scroll
         scrub: true,
-        markers: true,
       },
     });
 
@@ -112,56 +112,9 @@ const About = () => {
 
           {/* Horizontal Scroll Section */}
           <div ref={horizontalSectionRef} className="flex h-screen w-[170vw]">
-            {/* Horizontal scroll items */}
-            <div className="w-screen h-screen flex-shrink-0 bg-black">
-              <div className="flex h-full w-full flex-row justify-center items-center px-[30px] gap-[30px]">
-                <div className="flex flex-col gap-[30px]">
-                  <span>CityLocks</span>
-                  <img src="/prj1.png" alt="" />
-                </div>
-                <div className="flex flex-col gap-[30px]">
-                  <span>CityLocks</span>
-                  <img src="/prj2.png" alt="" />
-                </div>
-                <div className="flex flex-col gap-[30px]">
-                  <span>CityLocks</span>
-                  <img src="/prj3.png" alt="" />
-                </div>
-                <div className="flex flex-col gap-[30px]">
-                  <span>CityLocks</span>
-                  <img src="/prj4.png" alt="" />
-                </div>
-              </div>
-            </div>
-
-            {/* Explore  */}
-            <div className="w-screen h-full relative flex-shrink-0 flex items-center justify-center bg-black px-[140px]">
-              <h1 className="text-[120px] font-poppins z-30 font-medium">
-                LET’S EXPLORE
-              </h1>
-              <div
-                className="card absolute overflow-hidden z-10 left-[10%] top-[10%] rounded-lg w-[200px] h-[218px]"
-                id="card-1"
-              >
-                <img src="/exp1.png" alt="" />
-              </div>
-              <div
-                className="card absolute overflow-hidden bottom-[15%] left-[17%] bottom-[15%]  rounded-lg w-[200px] h-[218px]"
-                id="card-2"
-              >
-                <img src="/exp3.png" alt="" />
-              </div>
-              <div
-                className="card card absolute overflow-hidden right-[10%]  rounded-lg w-[347px] h-[429px]"
-                id="card-3"
-              >
-                <img src="/exp2.png" alt="" />
-              </div>
-            </div>
-
-            <div className="w-screen h-full flex-shrink-0 flex items-center justify-center bg-green-300">
-              <h2 className="text-3xl">Horizontal Section 3</h2>
-            </div>
+            <Products/>
+            <Explore/>
+            <Plus/>
           </div>
         </div>
       </div>

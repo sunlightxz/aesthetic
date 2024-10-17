@@ -44,7 +44,9 @@ body {
 }
 
 
-
+.reveal2 {
+  clip-path: inset(0px 0px 0px 100%);
+}
 /*
 .img-holder{
   position: relative;
