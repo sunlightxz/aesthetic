@@ -30,30 +30,30 @@ const Explore = ({ scrollProgress }) => {
   }, [scrollProgress]); // Effect will re-run when scrollProgress changes
 
   return (
-    <div ref={exploreRef} className="h-screen relative flex justify-center items-center flex-shrink-0 bg-black px-[140px]">
-      <div className="min-w-screen relative flex justify-center items-center h-full">
+    <div ref={exploreRef} className="h-screen w-screen relative flex justify-center items-center flex-shrink-0 bg-black px-[140px]">
+       <div className="min-w-screen h-full relative flex justify-center items-center">
         <h1 className="text-[120px] font-poppins z-30 font-medium">LET’S EXPLORE</h1>
-        <div className="card absolute overflow-hidden z-10 left-[10%] top-[10%] rounded-lg w-[200px] h-[218px]" id="card-1">
+        <div className="card absolute overflow-hidden z-10 left-[13%] bottom-[67%] rounded-lg w-[200px] h-[218px]" id="card-1">
           <img src="/exp1.png" alt="" />
         </div>
-        <div className="card absolute overflow-hidden bottom-[15%] left-[17%] rounded-lg w-[200px] h-[218px]" id="card-2">
+        <div className="card absolute overflow-hidden top-[61%] left-[45%] rounded-lg w-[200px] h-[218px]" id="card-2">
           <img src="/exp3.png" alt="" />
         </div>
-        <div className="card absolute overflow-hidden right-[10%] rounded-lg w-[347px] h-[429px]" id="card-3">
+        <div className="card absolute overflow-hidden left-[85%] bottom-[20%] rounded-lg w-[347px] h-[429px]" id="card-3">
           <img src="/exp2.png" alt="" />
         </div>
       </div>
 
       {/* Second version of the content (revealed while scrolling) */}
-      <div className="min-w-screen w-full absolute flex justify-center items-center bg-white h-full reveal2" ref={contpaint}>
-        <h1 className="text-[120px] font-poppins z-30 font-medium">LET’S EXPLORE</h1>
-        <div className="card absolute overflow-hidden z-10 left-[10%] top-[10%] rounded-lg w-[200px] h-[218px]" id="card-4">
+      <div className="min-w-screen w-full absolute flex justify-center items-center h-full reveal2" ref={contpaint}>
+      <h1 className="text-[120px] font-poppins z-30 font-medium">LET’S EXPLORE</h1>
+        <div className="card absolute overflow-hidden z-10 left-[13%] bottom-[67%] rounded-lg w-[200px] h-[218px]" id="card-1">
           <img src="/exp1.png" alt="" />
         </div>
-        <div className="card absolute overflow-hidden bottom-[15%] left-[17%] rounded-lg w-[200px] h-[218px]" id="card-5">
+        <div className="card absolute overflow-hidden top-[61%] left-[45%] rounded-lg w-[200px] h-[218px]" id="card-2">
           <img src="/exp3.png" alt="" />
         </div>
-        <div className="card absolute overflow-hidden right-[10%] rounded-lg w-[347px] h-[429px]" id="card-6">
+        <div className="card absolute overflow-hidden left-[85%] bottom-[20%] rounded-lg w-[347px] h-[429px]" id="card-3">
           <img src="/exp2.png" alt="" />
         </div>
       </div>
