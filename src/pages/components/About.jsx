@@ -1,10 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Lenis from "@studio-freight/lenis";
 import Products from "../wrapped-component/Products";
 import Explore from "../wrapped-component/Explore";
-import Plus from "../wrapped-component/Plus";
 
 // Register ScrollTrigger with GSAP
 gsap.registerPlugin(ScrollTrigger);
@@ -14,6 +13,7 @@ const About = () => {
   const imgHolderRef = useRef(null);
   const horizontalSectionRef = useRef(null);
   const firstSectionRef = useRef(null);
+  const [scrollProgress, setScrollProgress] = useState(0); // Scroll progress state
 
   useEffect(() => {
     // Create the scroll animation using GSAP and ScrollTrigger
@@ -52,6 +52,10 @@ const About = () => {
         start: "top+=100% center", // Adjust based on when you want to start
         end: "top+=200% center", // Adjust based on how long you want the horizontal scroll
         scrub: true,
+        onUpdate: (self) => {
+          const progress = self.progress.toFixed(2) * 100;
+          setScrollProgress(progress); // Update scroll progress
+        },
       },
     });
 
@@ -82,9 +86,16 @@ const About = () => {
   }, []);
 
   return (
-    <div ref={scrollContainer} className="w-[600vw] relative overflow-hidden">
+    <div className="relative">
+        <div className="fixed top-0 left-0 p-4 z-50 bg-black text-white">
+        <h3>Scroll Progress: {scrollProgress}%</h3>
+      </div>
+      <div ref={scrollContainer} className="w-[600vw] relative overflow-hidden">
+      {/* Scroll Progress Display */}
+    
+
       <div className="h-screen w-screen relative">
-        <div className="flex w-[270vw]">
+        <div className="flex w-[400vw]">
           <div className="w-screen h-screen relative overflow-hidden">
             <section
               ref={firstSectionRef}
@@ -111,14 +122,15 @@ const About = () => {
           </div>
 
           {/* Horizontal Scroll Section */}
-          <div ref={horizontalSectionRef} className="flex h-screen w-[170vw]">
-            <Products/>
-            <Explore/>
-            <Plus/>
+          <div ref={horizontalSectionRef} className="flex h-screen w-[300vw]">
+            <Products />
+            <Explore scrollProgress={scrollProgress} />
           </div>
         </div>
       </div>
     </div>
+    </div>
+  
   );
 };
 

@@ -6,6 +6,7 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import About from "./components/About";
 import Projects from "./components/Projects";
+import HorizontalScroll from "./wrapped-component/HorizontalScroll";
 
 export default function Home() {
   const [showGif, setShowGif] = useState(false);
@@ -19,11 +20,16 @@ export default function Home() {
       <div className="absolute inset-0 z-10 bg-black opacity-90"></div>
       <div className="relative z-20 w-screen overflow-hidden">
         <Nav setShowGif={setShowGif} />
-        <Hero showGif={showGif} />
-        <About/>
+        {/*
+          <Hero showGif={showGif} />
+       
         <Projects/>
      
         <Footer/>
+
+         <HorizontalScroll/>
+        */}
+      <About/>
       </div>
     </div>
   );
