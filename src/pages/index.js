@@ -27,7 +27,8 @@ export default function Home() {
      
         <Footer/>
 
-         <HorizontalScroll/>
+              <HorizontalScroll/>
+
         */}
       <About/>
       </div>
