@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Explore from "../wrapped-component/Explore";
+import Products from "../wrapped-component/Products";
 
 // Register ScrollTrigger with GSAP
 gsap.registerPlugin(ScrollTrigger);
@@ -68,9 +69,9 @@ const About = () => {
         duration: 1.3,
       })
       .to(scrollContainer.current, {
-        x: "-150vw",
+        x: "-350vw",
         ease: "power2.inOut",
-        duration: 1.3,
+        duration: 2.3,
         scrub: 1,
       })
       .to(
@@ -97,8 +98,9 @@ const About = () => {
       </div>
       <div ref={scrollContainer} className="w-[400vw] relative overflow-hidden">
         <div className="h-screen w-screen relative">
+          <div className="flex w-[500vw]">
           <div className="flex w-[300vw]">
-            <div className="w-screen h-screen relative overflow-hidden">
+              <div className="w-screen h-screen relative overflow-hidden">
               <section
                 ref={firstSectionRef}
                 className="h-[70vh] absolute left-0 top-0 z-10 first-section w-screen border-b border-[#C7BCBC]"
@@ -124,8 +126,16 @@ const About = () => {
 
             {/* Horizontal Scroll Section */}
             <div ref={horizontalSectionRef} className="flex h-screen w-[200vw]">
+               <Products/>
               <Explore horizontalTl={horizontalTl} />
             </div>
+          </div>
+
+            <div  className="flex h-screen w-[200vw]">
+                <div className="w-screen h-screen"></div>
+                <div className="w-screen h-screen"></div>
+            </div>
+           
           </div>
         </div>
       </div>
