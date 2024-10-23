@@ -12,14 +12,11 @@ const About = () => {
   const imgHolderRef = useRef(null);
   const horizontalSectionRef = useRef(null);
   const firstSectionRef = useRef(null);
-  const boxRef = useRef(null); // Ref for the box
-  const boxHolderRef = useRef(null);
-  const boxARef = useRef(null);
-  const [scrollProgress, setScrollProgress] = useState(0); // Scroll progress state
+  const heroScroll = useRef(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [horizontalTl, setHorizontalTl] = useState(null);
 
   useEffect(() => {
-    // Create the scroll animation using GSAP and ScrollTrigger
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: scrollContainer.current,
@@ -27,34 +24,36 @@ const About = () => {
         end: "200%", // Adjust based on your content length
         scrub: true,
         pin: true,
+        markers :true,
       },
     });
 
-    // Animation for the first section and image holder
+    // Vertical scroll animation for the first section
     tl.to(firstSectionRef.current, {
       y: "-100%",
       ease: "power2.inOut",
       duration: 1,
     })
-      .fromTo(
-        imgHolderRef.current,
-        { scale: 1.4, ease: "power2.inOut" },
-        { scale: 1, ease: "power2.inOut", duration: 1 },
-        0
-      )
-      .to(imgHolderRef.current, {
-        width: "50%",
-        duration: 1.3,
-        ease: "power2.inOut",
-      });
+    .fromTo(
+      imgHolderRef.current,
+      { scale: 1.4 },
+      { scale: 1, duration: 2, ease: "power2.inOut" },
+      0
+    )
+    .to(imgHolderRef.current, {
+      width: "40%",
+      duration: 1.3,
+      ease: "power2.inOut",
+    });
 
-    // Create the horizontal timeline
-    const newHorizontalTl = gsap.timeline({
+    // Horizontal scroll animation setup
+    const newhorizontalScroll = gsap.timeline({
       scrollTrigger: {
         trigger: imgHolderRef.current,
-        start: "top+=100% center",
-        end: "top+=200% center",
+        start: "top+=140% center",
+        end: "top+=240% center",// Adjust based on how far you want to scroll horizontally
         scrub: true,
+        markers : true ,
         onUpdate: (self) => {
           const progress = self.progress.toFixed(2) * 100;
           setScrollProgress(progress);
@@ -62,30 +61,23 @@ const About = () => {
       },
     });
 
-    newHorizontalTl
+    newhorizontalScroll
       .to(horizontalSectionRef.current, {
-        x: "-700px",
+        x: "-750px", // Move the horizontal section left
         ease: "power2.inOut",
-        duration: 1.3,
+        duration: 1,
       })
-      .to(scrollContainer.current, {
-        x: "-350vw",
+      .to(heroScroll.current, {
+        x: "-150vw",
         ease: "power2.inOut",
         duration: 2.3,
-        scrub: 1,
       })
-      .to(
-        imgHolderRef.current,
-        {
-          x: "-15%",
-          ease: "power2.inOut",
-          duration: 1,
-        },
-        0
-      );
-
-    setHorizontalTl(newHorizontalTl);
-
+      .to(scrollContainer.current, {
+        x: "-28.6%",
+        ease: "power2.inOut",
+      })
+      ;
+      setHorizontalTl(newhorizontalScroll);
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
@@ -96,11 +88,10 @@ const About = () => {
       <div className="fixed top-0 left-0 p-4 z-50 bg-black text-white">
         <h3>Scroll Progress: {scrollProgress}%</h3>
       </div>
-      <div ref={scrollContainer} className="w-[400vw] relative overflow-hidden">
+      <div ref={scrollContainer} className="w-[350vw] flex relative overflow-hidden">
         <div className="h-screen w-screen relative">
-          <div className="flex w-[500vw]">
-          <div className="flex w-[300vw]">
-              <div className="w-screen h-screen relative overflow-hidden">
+          <div className="flex w-[300vw]" ref={heroScroll}>
+            <div className="w-screen h-screen relative overflow-hidden">
               <section
                 ref={firstSectionRef}
                 className="h-[70vh] absolute left-0 top-0 z-10 first-section w-screen border-b border-[#C7BCBC]"
@@ -118,7 +109,6 @@ const About = () => {
                 </div>
               </section>
 
-              {/* Second Section (Image with Scroll Animation) */}
               <section className="w-screen h-screen transition-all duration-500">
                 <div className="img-holder" ref={imgHolderRef}></div>
               </section>
@@ -126,17 +116,15 @@ const About = () => {
 
             {/* Horizontal Scroll Section */}
             <div ref={horizontalSectionRef} className="flex h-screen w-[200vw]">
-               <Products/>
+              <Products />
               <Explore horizontalTl={horizontalTl} />
             </div>
           </div>
+        </div>
 
-            <div  className="flex h-screen w-[200vw]">
-                <div className="w-screen h-screen"></div>
-                <div className="w-screen h-screen"></div>
-            </div>
-           
-          </div>
+        <div className="flex h-[200vh] w-screen flex-col relative bgbglue">
+          <div className="w-screen h-screen bg-red-300"></div>
+          <div className="w-screen h-screen bg-blue-400"></div>
         </div>
       </div>
     </div>
@@ -144,6 +132,3 @@ const About = () => {
 };
 
 export default About;
-
-
-

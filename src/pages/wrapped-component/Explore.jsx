@@ -12,7 +12,7 @@ const Explore = ({ horizontalTl }) => {
   const boxRevealTl = gsap.timeline({
     scrollTrigger: {
       trigger: boxHolderRef.current,
-      start: "right 70%", 
+      start: "right 80%", 
       end: "right 40%",   
       scrub: 3,
       markers: true ,
@@ -62,7 +62,7 @@ const Explore = ({ horizontalTl }) => {
         <div className="card absolute overflow-hidden top-[61%] left-[45%] rounded-lg w-[200px] h-[218px]" id="card-2">
           <img src="/exp3.png" alt="" />
         </div>
-        <div className="card absolute overflow-hidden left-[85%] bottom-[20%] rounded-lg w-[347px] h-[429px]" id="card-3">
+        <div className="card absolute overflow-hidden left-[80%] bottom-[20%] rounded-lg w-[347px] h-[429px]" id="card-3">
           <img src="/exp2.png" alt="" />
         </div>
       </div>
@@ -75,7 +75,7 @@ const Explore = ({ horizontalTl }) => {
         <div className="card absolute overflow-hidden top-[61%] left-[45%] rounded-lg w-[200px] h-[218px]" id="card-2">
           <img src="/exc3.png" alt="" />
         </div>
-        <div className="card absolute overflow-hidden left-[75%] bottom-[20%] rounded-lg w-[347px] h-[429px]" id="card-3">
+        <div className="card absolute overflow-hidden left-[70%] bottom-[20%] rounded-lg w-[347px] h-[429px]" id="card-3">
           <img src="/exc1.png" alt="" />
         </div>
       </div>
