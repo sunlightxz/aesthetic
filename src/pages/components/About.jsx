@@ -87,13 +87,13 @@ const About = () => {
       .fromTo(
         img1Ref.current,
         { x: "400%" },
-        { x: "50%", duration: 1, ease: "power2.inOut" },
+        { x: "100%", duration: 1, ease: "power2.inOut" },
         imgAnimationStartTime // Start after the previous animations
       )
       .fromTo(
         img2Ref.current,
         { x: "450%" },
-        { x: "-120%", duration: 1.5, ease: "power2.inOut" },
+        { x: "0%", duration: 1.5, ease: "power2.inOut" },
         imgAnimationStartTime // Start after the previous animations
       )
       .fromTo(
@@ -104,8 +104,14 @@ const About = () => {
       )
       .fromTo(
         img2Ref.current,
-        { scale: "1" },
-        { scale: "5", duration: 1.5, ease: "power2.inOut" },
+        { scale: "0.4" },
+        { scale: "1", duration: 1.5, ease: "power2.inOut" },
+         // Start after the previous animations
+      )
+      .fromTo(
+        img1Ref.current,
+        { scale: "0.4" },
+        { scale: "1", duration: 1.5, ease: "power2.inOut" },
          // Start after the previous animations
       )
   
@@ -160,7 +166,7 @@ const About = () => {
         </div>
 
         <div className="flex h-[200vh] w-screen flex-col relative bgbglue">
-          <div className="w-screen h-screen flex justify-center items-center bg-white">
+          <div className="w-screen overflow-hidden h-screen flex justify-center items-center bg-white">
             <div className="w-full h-full flex justify-center items-center relative">
               <img
                 src="/scale.png"
@@ -170,10 +176,10 @@ const About = () => {
               />
              <div className="absolute inset-0">
               <div className="absolute " ref={img1Ref}>
-                  <img src="exc1.png" alt="" />
+                  <img src="slac1.png" className="h-screen w-full object-cover" alt="" />
               </div>
               <div className="absolute" ref={img2Ref}>
-                  <img src="exc2.png" alt="" />
+                  <img src="slac2.png" className="h-screen w-full object-cover" alt="" />
               </div>
              </div>
             </div>
