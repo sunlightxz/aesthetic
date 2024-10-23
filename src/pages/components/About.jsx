@@ -12,7 +12,10 @@ const About = () => {
   const imgHolderRef = useRef(null);
   const horizontalSectionRef = useRef(null);
   const firstSectionRef = useRef(null);
+  const imgScoll = useRef(null);
   const heroScroll = useRef(null);
+  const img1Ref = useRef(null);
+  const img2Ref = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [horizontalTl, setHorizontalTl] = useState(null);
 
@@ -21,49 +24,49 @@ const About = () => {
       scrollTrigger: {
         trigger: scrollContainer.current,
         start: "top top",
-        end: "200%", // Adjust based on your content length
+        end: "200%",
         scrub: true,
         pin: true,
-        markers :true,
+        markers: true,
       },
     });
-
+  
     // Vertical scroll animation for the first section
     tl.to(firstSectionRef.current, {
       y: "-100%",
       ease: "power2.inOut",
-      duration: 1,
+    
     })
-    .fromTo(
-      imgHolderRef.current,
-      { scale: 1.4 },
-      { scale: 1, duration: 2, ease: "power2.inOut" },
-      0
-    )
-    .to(imgHolderRef.current, {
-      width: "40%",
-      duration: 1.3,
-      ease: "power2.inOut",
-    });
-
+      .fromTo(
+        imgHolderRef.current,
+        { scale: (1.4,1.5) },
+        { scale: 1, duration: 1.7, ease: "power2.inOut" },
+        0
+      )
+      .to(imgHolderRef.current, {
+        width: "40%",
+        duration: 1.3,
+        ease: "power2.inOut",
+      });
+  
     // Horizontal scroll animation setup
     const newhorizontalScroll = gsap.timeline({
       scrollTrigger: {
         trigger: imgHolderRef.current,
-        start: "top+=140% center",
-        end: "top+=240% center",// Adjust based on how far you want to scroll horizontally
+        start: "top+=115% center",
+        end: "top+=240%",
         scrub: true,
-        markers : true ,
+        markers: true,
         onUpdate: (self) => {
           const progress = self.progress.toFixed(2) * 100;
           setScrollProgress(progress);
         },
       },
     });
-
+  
     newhorizontalScroll
       .to(horizontalSectionRef.current, {
-        x: "-750px", // Move the horizontal section left
+        x: "-750px",
         ease: "power2.inOut",
         duration: 1,
       })
@@ -75,20 +78,54 @@ const About = () => {
       .to(scrollContainer.current, {
         x: "-28.6%",
         ease: "power2.inOut",
-      })
-      ;
-      setHorizontalTl(newhorizontalScroll);
+      });
+  
+    // Synchronize the images' animations with delays
+    const imgAnimationStartTime = newhorizontalScroll.totalDuration(); // Gets the total duration up to this point
+  
+    newhorizontalScroll
+      .fromTo(
+        img1Ref.current,
+        { x: "400%" },
+        { x: "50%", duration: 1, ease: "power2.inOut" },
+        imgAnimationStartTime // Start after the previous animations
+      )
+      .fromTo(
+        img2Ref.current,
+        { x: "450%" },
+        { x: "-120%", duration: 1.5, ease: "power2.inOut" },
+        imgAnimationStartTime // Start after the previous animations
+      )
+      .fromTo(
+        imgScoll.current,
+        { scale: 0.4 },
+        { scale: 1, duration: 2, ease: "power2.inOut" },
+        imgAnimationStartTime // Start after the previous animations
+      )
+      .fromTo(
+        img2Ref.current,
+        { scale: "1" },
+        { scale: "5", duration: 1.5, ease: "power2.inOut" },
+         // Start after the previous animations
+      )
+  
+    setHorizontalTl(newhorizontalScroll);
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
+  
+  
 
   return (
     <div className="relative">
       <div className="fixed top-0 left-0 p-4 z-50 bg-black text-white">
         <h3>Scroll Progress: {scrollProgress}%</h3>
       </div>
-      <div ref={scrollContainer} className="w-[350vw] flex relative overflow-hidden">
+      <div
+        ref={scrollContainer}
+        className="w-[350vw] flex relative overflow-hidden"
+      >
         <div className="h-screen w-screen relative">
           <div className="flex w-[300vw]" ref={heroScroll}>
             <div className="w-screen h-screen relative overflow-hidden">
@@ -123,8 +160,25 @@ const About = () => {
         </div>
 
         <div className="flex h-[200vh] w-screen flex-col relative bgbglue">
-          <div className="w-screen h-screen bg-red-300"></div>
-          <div className="w-screen h-screen bg-blue-400"></div>
+          <div className="w-screen h-screen flex justify-center items-center bg-white">
+            <div className="w-full h-full flex justify-center items-center relative">
+              <img
+                src="/scale.png"
+                alt=""
+                className="w-full h-full object-cover"
+                ref={imgScoll}
+              />
+             <div className="absolute inset-0">
+              <div className="absolute " ref={img1Ref}>
+                  <img src="exc1.png" alt="" />
+              </div>
+              <div className="absolute" ref={img2Ref}>
+                  <img src="exc2.png" alt="" />
+              </div>
+             </div>
+            </div>
+          </div>
+          <div className="w-screen h-screen bg-blue-200"></div>
         </div>
       </div>
     </div>

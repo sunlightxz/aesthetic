@@ -2,7 +2,7 @@ import React from 'react'
 
 const Products = () => {
   return (
-    <div className="w-screen h-screen flex-shrink-0 bg-black">
+    <div data-pin="true" className="w-screen h-screen flex-shrink-0 bg-black">
               <div className="flex h-full w-full flex-row justify-center items-center px-[30px] gap-[30px]">
                 <div className="flex flex-col gap-[30px]">
                   <span>CityLocks</span>
