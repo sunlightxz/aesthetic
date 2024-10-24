@@ -192,9 +192,15 @@ const About = () => {
               </div>
             </div>
           </div>
-        <div className="bg-blue-400 w-screen h-screen">
-            <div className="box w-[300px] h-[300px] bg-red-400">
-
+        <div className="bg-black w-screen h-screen">
+            <div className="flex justify-center items-start flex-col w-full h-full p-8 gap-4">
+              <button className="border border-[#8A8472] text-[#8A8472] px-6 py-2">Our Vision</button>
+              <p className="text-[45px] text-white">We’ve worked extensively in terms of geography and sector,
+developing a variety of work — products, services, and
+experiences — that has taught us that a well-defined visual 
+strategy is key to bring visibility, credibility, and funds to any
+organization. Starting in 2021, we decided to plant a tree for 
+each client that we work with.</p>
             </div>
         </div>
         </div>
