@@ -56,7 +56,7 @@ const HorizontalScroll = () => {
       }, []);
     
       return (
-        <div className="container flex overflow-x-hidden w-screen" data-pin="true">
+        <div className="container flex h-screen overflow-x-hidden w-screen" data-pin="true">
           <div className="panel flex-shrink-0 w-screen h-screen bg-gray-800 text-gray-200 flex items-center justify-center">
             <h1 className="text-white">Section 1</h1>
             <div className="box box-1 w-24 h-20 text-center leading-20 bg-white rounded-lg text-gray-800 font-bold mx-5 transition-transform">

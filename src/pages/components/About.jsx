@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import Explore from "../src/pages/wrapped-component/Explore";
-import Products from "../src/pages/wrapped-component/Products";
+import Explore from "../wrapped-component/Explore";
+import Products from "../wrapped-component/Products";
 
 // Register ScrollTrigger with GSAP
 gsap.registerPlugin(ScrollTrigger);
@@ -27,7 +27,7 @@ const About = () => {
       scrollTrigger: {
         trigger: scrollContainer.current,
         start: "top top",
-        end: "300%",
+        end: "380%",
         scrub: true,
         pin: true,
         markers: true
@@ -192,7 +192,11 @@ const About = () => {
               </div>
             </div>
           </div>
-          <div className="w-screen h-screen bg-black"></div>
+        <div className="bg-blue-400 w-screen h-screen">
+            <div className="box w-[300px] h-[300px] bg-red-400">
+
+            </div>
+        </div>
         </div>
       </div>
     </div>

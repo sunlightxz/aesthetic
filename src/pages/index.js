@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Hero from "./components/Hero";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-import About from "../../public/About";
+import About from "./components/About";
 import Projects from "./components/Projects";
 import HorizontalScroll from "./wrapped-component/HorizontalScroll";
 
@@ -21,16 +21,18 @@ export default function Home() {
       <div className="relative z-20 w-screen overflow-hidden">
         <Nav setShowGif={setShowGif} />
         {/*
-          <Hero showGif={showGif} />
+        
        
         <Projects/>
      
-        <Footer/>
 
-              <HorizontalScroll/>
 
         */}
+        <Hero showGif={showGif} />
       <About/>
+      <HorizontalScroll/>
+      <Footer/>
+
       <div className="w-screen h-screen bg-black"> </div>
       </div>
     </div>
