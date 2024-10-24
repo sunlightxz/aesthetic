@@ -11,17 +11,16 @@ const Explore = ({ horizontalTl }) => {
 
   const boxRevealTl = gsap.timeline({
     scrollTrigger: {
-      trigger: boxHolderRef.current,
-      start: "left right", 
-      end: "left 50%",   
+      trigger: horizontalTl.current,
+      start: "25%", 
+      end: "28%",      
       scrub: 4,
       markers: true ,
-      containerAnimation: horizontalTl, // Link to the horizontal scroll animation
     },
   });
 
   boxRevealTl.fromTo('.card',  {
-    rotation: 17,
+    rotation: 15,
    
     y: 50
   },
@@ -39,9 +38,8 @@ const Explore = ({ horizontalTl }) => {
     {
       clipPath: "inset(0px 0px 0px 0%)",
       ease: "power2.inOut",
-    duration :1.3
     }
-    ,0.1
+    ,0.2
   );
 
   
