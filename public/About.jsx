@@ -30,6 +30,7 @@ const About = () => {
         end: "300%",
         scrub: true,
         pin: true,
+        markers: true
       },
     });
   
@@ -100,7 +101,16 @@ const About = () => {
           { y: "-40%" },
           
         )
-     
+        .fromTo(imx1Ref.current, 
+          {
+            clipPath: "inset(100% 0px 0px )",
+          },
+          {
+            clipPath: "inset(0% 0px 0px )",
+            ease: "power2.inOut",
+          }
+          
+        );
 
    
     setHorizontalTl(tl);
@@ -165,8 +175,8 @@ const About = () => {
               <div className="absolute inset-0 flex">
                 <div className="flex-1 flex justify-center items-center relative" ref={img1Ref}>
                   <img src="slac1.png" className="h-full w-full object-cover" alt="" />
-                  <div className="absolute w-full  h-full overflow-hidden flex justify-center" ref={imx1Ref}>
-                    <img src="slac2.png" className="h-full w-full object-cover" alt="" />
+                  <div className="absolute w-full h-full overflow-hidden flex justify-center" ref={imx1Ref}>
+                    <img src="/imx1.png" className="h-full absolute bottom-0 w-full object-cover" alt="" />
                   </div>
                 </div>
                 <div className="flex-1 relative" ref={img2Ref}>
