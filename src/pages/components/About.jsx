@@ -22,6 +22,7 @@ const About = () => {
   const mansonRef = useRef(null);
   const imgmanson = useRef(null);
   const darkbox = useRef(null);
+  const imgzmanson = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [horizontalTl, setHorizontalTl] = useState(null);
 
@@ -142,10 +143,14 @@ const About = () => {
           x: "0px",
         }
       )
-   
+      .fromTo(
+        imgzmanson.current , 
+        { y: "40%" },
+        { y:"0", ease: "power2.inOut"}
+      )
       .fromTo(
         imgmanson.current , 
-        { scale: 0.4 },
+        { scale: 0.7 },
         { scale: 1, duration: 1, ease: "power2.inOut"}
       )
 
@@ -275,12 +280,12 @@ const About = () => {
             ref={mansonRef}
           >
             <div className="flex w-screen justify-center items-center h-full relative">
-              <div className="w-[35%] flex flex-col gap-10">
-              <img src="/prj4.png" alt="" />
-              <img src="/prj2.png" alt="" />
+              <div className="w-[35%] flex flex-col  h-full">
+              <img className=" w-full h-[50%]" src="/manso1.png" alt="" />
+              <img className="manso2 w-full h-[50%]" src="/manso2.png" alt="" ref={imgzmanson}/>
               </div>
               <div className="w-[35%]">
-                <img src="/imx2.png" alt="" ref={imgmanson} />
+                <img src="/manso3.png" alt="" ref={imgmanson} />
               </div>
               <div className="w-[30%]">
                 <div
