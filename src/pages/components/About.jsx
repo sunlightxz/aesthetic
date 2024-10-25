@@ -20,6 +20,8 @@ const About = () => {
   const imx1Ref = useRef(null);
   const imx2Ref = useRef(null);
   const mansonRef = useRef(null);
+  const imgmanson = useRef(null);
+  const darkbox = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [horizontalTl, setHorizontalTl] = useState(null);
 
@@ -108,7 +110,7 @@ const About = () => {
       .to(img2Ref.current, { y: "-20%", duration: 1, ease: "power2.inOut" })
       .to(img2Ref.current, { y: "-40%" })
       .fromTo(
-        imx1Ref.current,
+        [imx1Ref.current, imx2Ref.current],
         {
           clipPath: "inset(100% 0px 0px )",
         },
@@ -116,18 +118,42 @@ const About = () => {
           clipPath: "inset(0% 0px 0px )",
           ease: "power2.inOut",
         }
+      );
+
+    tl.to(mansonRef.current, {
+      y: "-100%",
+      duration: 2,
+      ease: "power2.inOut",
+    })
+      .to(
+        [img1Ref.current, img2Ref.current, DescripRef.current],
+        {
+          y: "-950px",
+          duration: 1.5,
+          ease: "power2.inOut",
+          stagger: 0.2,
+        },
+        "<"
       )
-      tl.to(mansonRef.current, {
-        y: "-100%",
-        duration: 2,
-        ease: "power2.inOut"
-      })
-      .to([img1Ref.current, img2Ref.current, DescripRef.current], {
-        y: "-900px",
-        duration: 1.5,
+      .fromTo(
+        darkbox.current ,{
+          x: "-350%",
+        }, {
+          x: "0px",
+        }
+      )
+   
+      .fromTo(
+        imgmanson.current , 
+        { scale: 0.4 },
+        { scale: 1, duration: 1, ease: "power2.inOut"}
+      )
+
+      .to(mansonRef.current, {
+        x: "-100vw",
         ease: "power2.inOut",
-        stagger: 0.2
-      }, "<");
+        duration: 2,
+      });
 
     setHorizontalTl(tl);
     return () => {
@@ -137,10 +163,9 @@ const About = () => {
 
   return (
     <div className="relative">
-
       <div
         ref={scrollContainer}
-        className="w-[350vw] flex relative overflow-hidden"
+        className="w-[450vw] flex relative overflow-hidden"
       >
         <div className="h-screen w-screen relative">
           <div className="flex w-[300vw]" ref={heroScroll}>
@@ -175,7 +200,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className="flex h-[200vh] w-screen flex-col relative bgbglue">
+        <div className="flex h-[200vh]  flex-col overflow-hidden relative bgbglue">
           <div className="w-screen h-screen flex justify-center items-center bg-white">
             <div className="w-full h-full flex justify-center items-center relative">
               <img
@@ -205,13 +230,27 @@ const About = () => {
                     />
                   </div>
                 </div>
-                <div className="flex-1 relative" ref={img2Ref}>
+                <div
+                  className="flex-1 flex justify-center items-center relative"
+                  ref={img2Ref}
+                >
                   <img
                     src="slac2.png"
                     className="h-full w-full object-cover"
                     alt=""
                   />
+                  <div
+                    className="absolute w-full h-full overflow-hidden flex justify-center"
+                    ref={imx2Ref}
+                  >
+                    <img
+                      src="/imx2.png"
+                      className="h-full absolute bottom-0 w-full object-cover"
+                      alt=""
+                    />
+                  </div>
                 </div>
+
                 <div
                   className="w-[30%] flex flex-col justify-center"
                   ref={DescripRef}
@@ -231,18 +270,38 @@ const About = () => {
               </div>
             </div>
           </div>
-          <div className=" w-screen h-screen relative overflow-hidden" ref={mansonRef}>
-              <div className="flex w-full h-full">
-                  <div className="w-[35%]">
-                    <img src="/imx2x.png" alt="" />
-                  </div>
-                  <div className="w-35%">
-                  <img src="/imx2.png" alt="" />
-                  </div>
-                  <div className="w-[30%]">
-                    <img src="" alt="" />
-                  </div>
+          <div
+            className=" w-[200vw] h-screen relative overflow-hidden"
+            ref={mansonRef}
+          >
+            <div className="flex w-screen justify-center items-center h-full relative">
+              <div className="w-[35%] flex flex-col gap-10">
+              <img src="/prj4.png" alt="" />
+              <img src="/prj2.png" alt="" />
               </div>
+              <div className="w-[35%]">
+                <img src="/imx2.png" alt="" ref={imgmanson} />
+              </div>
+              <div className="w-[30%]">
+                <div
+                  className="flex rounded-lg p-8 gap-6 justify-center flex-col items-start bg-black text-white min-h-[150px] overflow-hidden"
+                  ref={darkbox}
+                >
+                  <button className="border border-[#8A8472] rounded-xl text-lg text-[#8A8472] px-5 py-1">
+                    Our Vision
+                  </button>
+                  <p className="text-[25px] text-white font-poppins">
+                    We’ve worked extensively in terms of geography and sector,
+                    developing a variety of work — products, services, and
+                    experiences — that has taught us that a well-defined visual
+                    strategy is key to bring visibility, credibility, and funds
+                    to any organization.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="w-screen flex h-full relative bg-black"></div>
           </div>
         </div>
       </div>

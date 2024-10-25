@@ -56,25 +56,8 @@ const HorizontalScroll = () => {
       }, []);
     
       return (
-        <div className="container flex h-screen overflow-x-hidden w-screen" data-pin="true">
-          <div className="panel flex-shrink-0 w-screen h-screen bg-gray-800 text-gray-200 flex items-center justify-center">
-            <h1 className="text-white">Section 1</h1>
-            <div className="box box-1 w-24 h-20 text-center leading-20 bg-white rounded-lg text-gray-800 font-bold mx-5 transition-transform">
-              Box 1
-            </div>
-          </div>
-          <div data-pin="true" className="panel flex-shrink-0 w-screen h-screen bg-gray-900 text-gray-200 flex items-center justify-center">
-            <h1 className="text-white">Section 2</h1>
-            <div className="box box-2 w-24 h-20 text-center leading-20 bg-white rounded-lg text-gray-800 font-bold mx-5 transition-transform">
-              Box 2
-            </div>
-          </div>
-          <div className="panel flex-shrink-0 w-screen h-screen bg-gray-700 text-gray-200 flex items-center justify-center">
-            <h1 className="text-white">Section 3</h1>
-            <div className="box box-3 w-24 h-20 text-center leading-20 bg-white rounded-lg text-gray-800 font-bold mx-5 transition-transform">
-              Box 3
-            </div>
-          </div>
+        <div className=" flex translate-y-[-100%] h-screen  w-screen bg-black" >
+            <div className="h-[200vh] bg-blue-100 w-full "></div>
           {/* Add more panels and boxes as needed */}
         </div>
       );
