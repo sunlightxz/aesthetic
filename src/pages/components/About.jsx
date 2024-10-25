@@ -19,6 +19,7 @@ const About = () => {
   const DescripRef = useRef(null);
   const imx1Ref = useRef(null);
   const imx2Ref = useRef(null);
+  const mansonRef = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [horizontalTl, setHorizontalTl] = useState(null);
 
@@ -30,10 +31,10 @@ const About = () => {
         end: "380%",
         scrub: true,
         pin: true,
-        markers: true
+        markers: true,
       },
     });
-  
+
     // Vertical scroll animation for the first section
     tl.to(firstSectionRef.current, {
       y: "-100%",
@@ -46,17 +47,20 @@ const About = () => {
         duration: 1.3, // Duration for scaling and width change
         ease: "power2.inOut",
       })
-      .to(horizontalSectionRef.current, {
-        x: "-50vw", // Move horizontal section
-        ease: "power2.inOut",
-        duration: 1, // Duration for horizontal movement
-      }, "<") // Start this animation at the same time as the previous one
-  
+      .to(
+        horizontalSectionRef.current,
+        {
+          x: "-50vw", // Move horizontal section
+          ease: "power2.inOut",
+          duration: 1, // Duration for horizontal movement
+        },
+        "<"
+      ) // Start this animation at the same time as the previous one
+
       .to(heroScroll.current, {
         x: "-150vw",
         ease: "power2.inOut",
         duration: 2,
-    
       })
       .to(scrollContainer.current, {
         x: "-100vw",
@@ -68,64 +72,72 @@ const About = () => {
         { x: "100%", duration: 1.5, ease: "power2.inOut" },
         "<" // Start this animation at the same time as the next one
       )
-        .fromTo(
-          img2Ref.current,
-          { x: "450%" },
-          { x: "0%", duration: 1.5, ease: "power2.inOut" },
-          "<" // Align with the previous animation
-        )
-        .fromTo(
-          imgScoll.current,
-          { scale: 0.4 },
-          { scale: 1, duration: 1.5, ease: "power2.inOut" },
-          "<"
-        )
-        .fromTo(
-          [img1Ref.current, img2Ref.current],
-          { x: "100%", opacity: 0 },
-          { x: "0%", opacity: 1, duration: 1.5, ease: "power2.inOut", stagger: 0.2 }
-        )
-        .fromTo(
-          [img1Ref.current, img2Ref.current],
-          { scale: 0.4 },
-          { scale: 1, duration: 1, ease: "power2.inOut", stagger: 0.2 }
-        )
-        .fromTo(
-          DescripRef.current,
-          { y: "100%", opacity: 0 },
-          { y: "0%", opacity: 1, duration: 1.5, ease: "power2.inOut" }
-        )
-        .to(img2Ref.current, { y: "-20%", duration: 1, ease: "power2.inOut" })
-        .to(
-          img2Ref.current,
-          { y: "-40%" },
-          
-        )
-        .fromTo(imx1Ref.current, 
-          {
-            clipPath: "inset(100% 0px 0px )",
-          },
-          {
-            clipPath: "inset(0% 0px 0px )",
-            ease: "power2.inOut",
-          }
-          
-        );
+      .fromTo(
+        img2Ref.current,
+        { x: "450%" },
+        { x: "0%", duration: 1.5, ease: "power2.inOut" },
+        "<" // Align with the previous animation
+      )
+      .fromTo(
+        imgScoll.current,
+        { scale: 0.4 },
+        { scale: 1, duration: 1.5, ease: "power2.inOut" },
+        "<"
+      )
+      .fromTo(
+        [img1Ref.current, img2Ref.current],
+        { x: "100%", opacity: 0 },
+        {
+          x: "0%",
+          opacity: 1,
+          duration: 1.5,
+          ease: "power2.inOut",
+          stagger: 0.2,
+        }
+      )
+      .fromTo(
+        [img1Ref.current, img2Ref.current],
+        { scale: 0.4 },
+        { scale: 1, duration: 1, ease: "power2.inOut", stagger: 0.2 }
+      )
+      .fromTo(
+        DescripRef.current,
+        { y: "100%", opacity: 0 },
+        { y: "0%", opacity: 1, duration: 1.5, ease: "power2.inOut" }
+      )
+      .to(img2Ref.current, { y: "-20%", duration: 1, ease: "power2.inOut" })
+      .to(img2Ref.current, { y: "-40%" })
+      .fromTo(
+        imx1Ref.current,
+        {
+          clipPath: "inset(100% 0px 0px )",
+        },
+        {
+          clipPath: "inset(0% 0px 0px )",
+          ease: "power2.inOut",
+        }
+      )
+      tl.to(mansonRef.current, {
+        y: "-100%",
+        duration: 2,
+        ease: "power2.inOut"
+      })
+      .to([img1Ref.current, img2Ref.current, DescripRef.current], {
+        y: "-900px",
+        duration: 1.5,
+        ease: "power2.inOut",
+        stagger: 0.2
+      }, "<");
 
-   
     setHorizontalTl(tl);
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
-  
-  
 
   return (
     <div className="relative">
-      <div className="fixed top-0 left-0 p-4 z-50 bg-black text-white">
-        <h3>Scroll Progress: {scrollProgress}%</h3>
-      </div>
+
       <div
         ref={scrollContainer}
         className="w-[350vw] flex relative overflow-hidden"
@@ -173,36 +185,65 @@ const About = () => {
                 ref={imgScoll}
               />
               <div className="absolute inset-0 flex">
-                <div className="flex-1 flex justify-center items-center relative" ref={img1Ref}>
-                  <img src="slac1.png" className="h-full w-full object-cover" alt="" />
-                  <div className="absolute w-full h-full overflow-hidden flex justify-center" ref={imx1Ref}>
-                    <img src="/imx1.png" className="h-full absolute bottom-0 w-full object-cover" alt="" />
+                <div
+                  className="flex-1 flex justify-center items-center relative"
+                  ref={img1Ref}
+                >
+                  <img
+                    src="slac1.png"
+                    className="h-full w-full object-cover"
+                    alt=""
+                  />
+                  <div
+                    className="absolute w-full h-full overflow-hidden flex justify-center"
+                    ref={imx1Ref}
+                  >
+                    <img
+                      src="/imx1.png"
+                      className="h-full absolute bottom-0 w-full object-cover"
+                      alt=""
+                    />
                   </div>
                 </div>
                 <div className="flex-1 relative" ref={img2Ref}>
-                  <img src="slac2.png" className="h-full w-full object-cover" alt="" />
+                  <img
+                    src="slac2.png"
+                    className="h-full w-full object-cover"
+                    alt=""
+                  />
                 </div>
-                <div className="w-[30%] flex flex-col justify-center" ref={DescripRef}>
+                <div
+                  className="w-[30%] flex flex-col justify-center"
+                  ref={DescripRef}
+                >
                   <div className="p-4">
-                    <h3 className="text-2xl font-bold mb-2">How is it going?</h3>
-                    <p className="mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta eos cumque eius accusamus nesciunt, veniam dignissimos optio facilis id quasi.</p>
+                    <h3 className="text-2xl font-bold mb-2">
+                      How is it going?
+                    </h3>
+                    <p className="mb-4">
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Soluta eos cumque eius accusamus nesciunt, veniam
+                      dignissimos optio facilis id quasi.
+                    </p>
                     <img src="/prj3.png" alt="" className="w-full" />
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        <div className="bg-black w-screen h-screen">
-            <div className="flex justify-center items-start flex-col w-full h-full p-8 gap-4">
-              <button className="border border-[#8A8472] text-[#8A8472] px-6 py-2">Our Vision</button>
-              <p className="text-[45px] text-white">We’ve worked extensively in terms of geography and sector,
-developing a variety of work — products, services, and
-experiences — that has taught us that a well-defined visual 
-strategy is key to bring visibility, credibility, and funds to any
-organization. Starting in 2021, we decided to plant a tree for 
-each client that we work with.</p>
-            </div>
-        </div>
+          <div className=" w-screen h-screen relative overflow-hidden" ref={mansonRef}>
+              <div className="flex w-full h-full">
+                  <div className="w-[35%]">
+                    <img src="/imx2x.png" alt="" />
+                  </div>
+                  <div className="w-35%">
+                  <img src="/imx2.png" alt="" />
+                  </div>
+                  <div className="w-[30%]">
+                    <img src="" alt="" />
+                  </div>
+              </div>
+          </div>
         </div>
       </div>
     </div>
