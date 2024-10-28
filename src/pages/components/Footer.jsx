@@ -2,34 +2,49 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className='bg-black w-screen text-white h-screen absolute bottom-0'>
-      <div className="h-[90vh]  pt-[160px] w-full pb-[60px] px-[56px] flex flex-col justify-between items-start">
-        <div className="flex w-full h-full justify-between items-start">
-          <h3 className='text-[48px] text-[#EAEAEA] font-adamina'>Aesthetic</h3>
+    <div className='bg-black w-screen text-white min-h-screen absolute bottom-0'>
+      {/* Main Content Section */}
+      <div className="min-h-[90vh] pt-[160px] md:pt-[120px] w-full pb-[60px] px-[26px] md:px-[40px] sm:px-[20px] flex flex-col justify-between items-start">
+        {/* Upper Section */}
+        <div className="flex flex-col md:flex-row w-full h-full justify-between items-start">
+          {/* Logo */}
+          <h3 className='md:text-[48px] sm:text-[36px] text-[28px] text-[#EAEAEA] font-adamina mb-10 md:mb-0'>Aesthetic</h3>
+          
+          {/* Navigation Links */}
           <div className="flex flex-col justify-center items-start">
-            <a className='text-[48px] font-adamina tracking-wider mb-7' href="">Work</a>
-            <a className='text-[48px] font-adamina tracking-wider mb-7' href="">About</a>
-            <a className='text-[48px] font-adamina tracking-wider mb-7' href="">Purpose</a>
-            <a className='text-[48px] font-adamina tracking-wider ' href="">Contact</a>
+            <a className='text-[48px] md:text-[36px] sm:text-[28px] font-adamina tracking-wider mb-7 sm:mb-4 hover:text-gray-300 transition-colors' href="">Work</a>
+            <a className='text-[48px] md:text-[36px] sm:text-[28px] font-adamina tracking-wider mb-7 sm:mb-4 hover:text-gray-300 transition-colors' href="">About</a>
+            <a className='text-[48px] md:text-[36px] sm:text-[28px] font-adamina tracking-wider mb-7 sm:mb-4 hover:text-gray-300 transition-colors' href="">Purpose</a>
+            <a className='text-[48px] md:text-[36px] sm:text-[28px] font-adamina tracking-wider hover:text-gray-300 transition-colors' href="">Contact</a>
           </div>
         </div>
 
+        {/* Let's Chat Section */}
         <div className="">
-         <h3 className='text-[64px] tracking-wide text-white font-bold font-poppins'>Let's Chat</h3>
+         <h3 className='text-[64px] md:text-[48px] sm:text-[36px] tracking-wide text-white font-bold font-adamina'>Let's Chat</h3>
         </div>
       </div>
-      <div className='h-[10vh] border-t border-gray-400 w-full'>
-        <div className="flex justify-between items-center w-full h-full px-[56px]">
-          <div className="w-3/12 text-[#EAEAEA]  flex justify-between items-center">
-            <a className='text-2xl' href=""><span>Twitter</span></a>
-            <a className='text-2xl' href=""><span>Github</span></a>
-            <a className='text-2xl' href=""><span>Instagram</span></a>
+
+      {/* Bottom Bar */}
+      <div className='md:h-[10vh] h-[15vh] border-t border-gray-400 w-full'>
+        <div className="flex flex-col md:flex-row justify-between items-center w-full h-full md:px-[40px] px-[10px] py-4 md:py-0">
+          {/* Social Links */}
+          <div className="w-full md:w-5/12 flex justify-between items-center mb-4 md:mb-0">
+            <a className='md:text-2xl sm:text-xl text-lg text-[#EAEAEA] hover:text-gray-300 transition-colors' href=""><span>Twitter</span></a>
+            <a className='md:text-2xl sm:text-xl text-lg text-[#EAEAEA] hover:text-gray-300 transition-colors' href=""><span>Github</span></a>
+            <a className='md:text-2xl sm:text-xl text-lg text-[#EAEAEA] hover:text-gray-300 transition-colors' href=""><span>Instagram</span></a>
           </div>
-          <div className="w-5/12 justify-center flex items-center">
-            <p className="text-[#EAEAEA] text-2xl"> Contact me on : <a href="">amine@regie404.ma</a></p>
+
+          {/* Contact Email */}
+          <div className="w-full md:w-4/12 text-center mb-4 md:mb-0">
+            <p className="text-[#EAEAEA] md:text-2xl sm:text-xl text-lg">
+              Contact me on : <a href="" className="hover:text-gray-300 transition-colors">amine@regie404.ma</a>
+            </p>
           </div>
-          <div className="w-3/12 justify-center flex items-center">
-            <p className="text-[#EAEAEA]  text-2xl">Credit: Sunlightxz</p>
+
+          {/* Credits */}
+          <div className="w-full md:w-3/12 text-center md:text-right">
+            <p className="text-[#EAEAEA] md:text-2xl sm:text-xl text-lg">Credit: Sunlightxz</p>
           </div>
         </div>
       </div>

@@ -113,7 +113,7 @@ const About = () => {
         { y: "0%", opacity: 1, duration: 1.5, ease: "power2.inOut" }
       )
       .to(img2Ref.current, { y: "-20%", duration: 1, ease: "power2.inOut" })
-      .to(img2Ref.current, { y: "-40%" })
+   
       .fromTo(
         [imx1Ref.current, imx2Ref.current],
         {
@@ -170,12 +170,17 @@ const About = () => {
         17.2
       );
 
+
+      const updateAnimations = () => {
+        const isMobile = window.innerWidth < 768;
+        const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+  
     tl.fromTo(
       endImgRef.current,
       {
-        width: "55%",
-        x: 926,
-        scale: 0.3,
+        width: isMobile ? "75%" : "55%",
+        x: isMobile ? 300 : isTablet ? 600 : 926,
+        scale: 0.4,
         transformOrigin: "100% 0% ",
       },
       {
@@ -188,8 +193,8 @@ const About = () => {
     ).fromTo(
       endImgctn.current,
       {
-        width: "25%",
-        x: "590px",
+        width: "25%" ,
+        x: isMobile ? 130 : isTablet ? 250 : 580,
       },
       {
         width: "100%",
@@ -205,6 +210,7 @@ const About = () => {
       } ,
       {
  y: "0px"
+ , duration : 1.5
       })
       .fromTo(
         endtxt.current, { 
@@ -216,8 +222,10 @@ const About = () => {
         }
         ,"<"
     )
-
+  }
     setHorizontalTl(tl);
+    window.addEventListener('resize', updateAnimations);
+    updateAnimations();
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
@@ -326,7 +334,7 @@ const About = () => {
                       Soluta eos cumque eius accusamus nesciunt, veniam
                       dignissimos optio facilis id quasi.
                     </p>
-                    <img src="/prj3.png" alt="" className="w-full" />
+                    <img src="/sinjab.png" alt="" className="w-full" />
                   </div>
                 </div>
               </div>
