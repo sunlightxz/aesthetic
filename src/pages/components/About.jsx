@@ -23,6 +23,8 @@ const About = () => {
   const imgmanson = useRef(null);
   const darkbox = useRef(null);
   const imgzmanson = useRef(null);
+  const endImgRef = useRef(null);
+  const endImgctn = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [horizontalTl, setHorizontalTl] = useState(null);
 
@@ -141,6 +143,7 @@ const About = () => {
           x: "-350%",
         }, {
           x: "0px",
+          duration : 1.6,
         }
       )
       .fromTo(
@@ -148,18 +151,39 @@ const About = () => {
         { y: "40%" },
         { y:"0", ease: "power2.inOut"}
       )
-      .fromTo(
-        imgmanson.current , 
-        { scale: 0.7 },
-        { scale: 1, duration: 1, ease: "power2.inOut"}
-      )
+    
 
       .to(mansonRef.current, {
         x: "-100vw",
         ease: "power2.inOut",
         duration: 2,
-      });
-
+      })
+      .to (imgScoll.current,{
+        opacity :0
+      }, 18)
+    
+      tl.fromTo(endImgRef.current, 
+        {
+          width: "55%",
+          x: 926,
+          scale: 0.3,
+        },
+        {
+          width: "100%",
+          x: 0,
+          scale: 1,
+          duration: 1.5,
+          ease: "power2.inOut"
+        }
+      )
+      .fromTo(endImgctn.current, {
+        width : "25%",
+        x: "590px"
+      }, {
+        width : "100%",
+        x: "0"
+      })
+    
     setHorizontalTl(tl);
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
@@ -276,16 +300,16 @@ const About = () => {
             </div>
           </div>
           <div
-            className=" w-[200vw] h-screen relative overflow-hidden"
+            className=" w-[200vw] h-screen flex relative overflow-hidden"
             ref={mansonRef}
           >
-            <div className="flex w-screen justify-center items-center h-full relative">
+            <div className="flex w-screen pr-5 justify-center items-center h-full relative border-gray-400 border-x">
               <div className="w-[35%] flex flex-col  h-full">
               <img className=" w-full h-[50%]" src="/manso1.png" alt="" />
               <img className="manso2 w-full h-[50%]" src="/manso2.png" alt="" ref={imgzmanson}/>
               </div>
-              <div className="w-[35%]">
-                <img src="/manso3.png" alt="" ref={imgmanson} />
+              <div className="w-[35%] flex justify-center items-center">
+                <img src="/manso3.png" alt="" className="w-[75%]" ref={imgmanson} />
               </div>
               <div className="w-[30%]">
                 <div
@@ -306,7 +330,27 @@ const About = () => {
               </div>
             </div>
 
-            <div className="w-screen flex h-full relative bg-black"></div>
+            <div className="w-screen flex h-full relative  ed">
+              <div className="h-full relative items-stretch justify-stretch w-[52%]">
+                <div className="relative h-[50vh] w-full overflow-hidden" ref={endImgRef} >
+                  <img 
+                    // Add this ref
+                    src="/expb3.png" 
+                    alt="" 
+                    className=" object-cover"
+                  />
+                </div>
+                <div className="flex h-[50vh] flex-end relative justify-end flex-col w-full pb-10 text-black">
+                  <h3>Lorem, ipsum dolor.</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, voluptates.</p>
+                </div>
+              </div>
+              <div className="h-full relative items-stretch justify-stretch w-[48%]">
+                  <div className="w-full h-full" ref={endImgctn}>
+                    <img src="/slac2.png" alt="" className="h-full object-cover" />
+                  </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

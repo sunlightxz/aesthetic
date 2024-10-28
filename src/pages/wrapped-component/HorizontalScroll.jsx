@@ -56,7 +56,7 @@ const HorizontalScroll = () => {
       }, []);
     
       return (
-        <div className=" flex translate-y-[-100%] h-screen  w-screen bg-black" >
+        <div className=" " >
             <div className="h-[200vh] bg-blue-100 w-full "></div>
           {/* Add more panels and boxes as needed */}
         </div>
