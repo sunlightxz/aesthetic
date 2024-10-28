@@ -12,8 +12,8 @@ const Explore = ({ horizontalTl }) => {
   const boxRevealTl = gsap.timeline({
     scrollTrigger: {
       trigger: horizontalTl.current,
-      start: "20%", 
-      end: "25%",      
+      start: "25%", 
+      end: "28%",      
       scrub: 4,
       markers: true ,
     },

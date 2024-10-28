@@ -139,51 +139,65 @@ const About = () => {
         "<"
       )
       .fromTo(
-        darkbox.current ,{
+        darkbox.current,
+        {
           x: "-350%",
-        }, {
+        },
+        {
           x: "0px",
-          duration : 1.6,
+          duration: 1.6,
         }
       )
       .fromTo(
-        imgzmanson.current , 
+        imgzmanson.current,
         { y: "40%" },
-        { y:"0", ease: "power2.inOut"}
+        { y: "0", ease: "power2.inOut" },
+        "<"
       )
-    
 
       .to(mansonRef.current, {
         x: "-100vw",
         ease: "power2.inOut",
         duration: 2,
       })
-      .to (imgScoll.current,{
-        opacity :0
-      }, 18)
-    
-      tl.fromTo(endImgRef.current, 
+      .to(
+        imgScoll.current,
         {
-          width: "55%",
-          x: 926,
-          scale: 0.3,
+          opacity: 0,
         },
-        {
-          width: "100%",
-          x: 0,
-          scale: 1,
-          duration: 1.5,
-          ease: "power2.inOut"
-        }
-      )
-      .fromTo(endImgctn.current, {
-        width : "25%",
-        x: "590px"
-      }, {
-        width : "100%",
-        x: "0"
-      })
-    
+        17.2
+      );
+
+    tl.fromTo(
+      endImgRef.current,
+      {
+        width: "55%",
+        x: 926,
+        scale: 0.3,
+        transformOrigin: "100% 0% ",
+      },
+      {
+        width: "100%",
+        x: 0,
+        scale: 1,
+        duration: 1.5,
+        ease: "power2.inOut",
+      }
+    ).fromTo(
+      endImgctn.current,
+      {
+        width: "25%",
+        x: "590px",
+      },
+      {
+        width: "100%",
+        x: "0",
+        duration: 1.5,
+        ease: "power2.inOut",
+      },
+      "<"
+    );
+
     setHorizontalTl(tl);
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
@@ -305,11 +319,21 @@ const About = () => {
           >
             <div className="flex w-screen pr-5 justify-center items-center h-full relative border-gray-400 border-x">
               <div className="w-[35%] flex flex-col  h-full">
-              <img className=" w-full h-[50%]" src="/manso1.png" alt="" />
-              <img className="manso2 w-full h-[50%]" src="/manso2.png" alt="" ref={imgzmanson}/>
+                <img className=" w-full h-[50%]" src="/manso1.png" alt="" />
+                <img
+                  className="manso2 w-full h-[50%]"
+                  src="/manso2.png"
+                  alt=""
+                  ref={imgzmanson}
+                />
               </div>
               <div className="w-[35%] flex justify-center items-center">
-                <img src="/manso3.png" alt="" className="w-[75%]" ref={imgmanson} />
+                <img
+                  src="/manso3.png"
+                  alt=""
+                  className="w-[75%]"
+                  ref={imgmanson}
+                />
               </div>
               <div className="w-[30%]">
                 <div
@@ -332,23 +356,40 @@ const About = () => {
 
             <div className="w-screen flex h-full relative  ed">
               <div className="h-full relative items-stretch justify-stretch w-[52%]">
-                <div className="relative h-[50vh] w-full overflow-hidden" ref={endImgRef} >
-                  <img 
+                <div
+                  className="relative h-[50vh] w-full overflow-hidden"
+                  ref={endImgRef}
+                >
+                  <img
                     // Add this ref
-                    src="/expb3.png" 
-                    alt="" 
-                    className=" object-cover"
+                    src="/end.png"
+                    alt=""
+                    className=" object-cover w-full"
                   />
                 </div>
                 <div className="flex h-[50vh] flex-end relative justify-end flex-col w-full pb-10 text-black">
-                  <h3>Lorem, ipsum dolor.</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, voluptates.</p>
+                  <div className="flex rounded-lg p-8 gap-6 justify-center flex-col items-start  text-black min-h-[150px] overflow-hidden">
+                    <button className="border border-[#8A8472] rounded-xl text-lg text-[#8A8472] px-5 py-1">
+                      Our Vision
+                    </button>
+                    <p className="text-[25px] font-poppins">
+                      We’ve worked extensively in terms of geography and sector,
+                      developing a variety of work — products, services, and
+                      experiences — that has taught us that a well-defined
+                      visual strategy is key to bring visibility, credibility,
+                      and funds to any organization.
+                    </p>
+                  </div>
                 </div>
               </div>
               <div className="h-full relative items-stretch justify-stretch w-[48%]">
-                  <div className="w-full h-full" ref={endImgctn}>
-                    <img src="/slac2.png" alt="" className="h-full object-cover" />
-                  </div>
+                <div className="w-full h-full" ref={endImgctn}>
+                  <img
+                    src="/endctn.png"
+                    alt=""
+                    className="h-full object-cover w-full"
+                  />
+                </div>
               </div>
             </div>
           </div>
