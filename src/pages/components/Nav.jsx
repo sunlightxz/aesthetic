@@ -69,7 +69,7 @@ const Nav = ({setShowGif} ) => {
 
         {/* Desktop menu */}
         <div className="hidden sm:flex space-x-16 justify-center items-center">
-          {['Work', 'About', 'Shop', 'Contact'].map((item) => (
+          {['Work', 'About', 'Purpose', 'Contact'].map((item) => (
             <div key={item} className="relative w-full group">
               <Link 
                 href="/" 
@@ -100,7 +100,7 @@ const Nav = ({setShowGif} ) => {
 
       {/* Mobile menu */}
       <div className={`sm:hidden flex flex-col justify-center items-center transition-all duration-500 ${isMenuOpen ? 'h-[calc(100%-5rem)] opacity-100' : 'h-0 opacity-0'} overflow-hidden`}>
-      {['Work', 'About', 'Shop', 'Contact'].map((item, index) => (
+      {['Work', 'About', 'Purpose', 'Contact'].map((item, index) => (
         <motion.div className="" key={item}             ref={el => linksRef.current[index] = el}
 >
             <Link

@@ -25,6 +25,8 @@ const About = () => {
   const imgzmanson = useRef(null);
   const endImgRef = useRef(null);
   const endImgctn = useRef(null);
+  const endclz = useRef(null);
+  const endtxt = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [horizontalTl, setHorizontalTl] = useState(null);
 
@@ -196,7 +198,24 @@ const About = () => {
         ease: "power2.inOut",
       },
       "<"
-    );
+    )
+    .fromTo(
+      endclz.current, { 
+        y: "1100px"
+      } ,
+      {
+ y: "0px"
+      })
+      .fromTo(
+        endtxt.current, { 
+          x: "0px"
+        } ,
+        {
+   x: "-800px" ,
+   duration : 1.2 ,
+        }
+        ,"<"
+    )
 
     setHorizontalTl(tl);
     return () => {
@@ -355,7 +374,8 @@ const About = () => {
             </div>
 
             <div className="w-screen flex h-full relative  ed">
-              <div className="h-full relative items-stretch justify-stretch w-[52%]">
+              <div className="h-full  relative items-stretch justify-stretch w-[52%]">
+               
                 <div
                   className="relative h-[50vh] w-full overflow-hidden"
                   ref={endImgRef}
@@ -367,7 +387,12 @@ const About = () => {
                     className=" object-cover w-full"
                   />
                 </div>
-                <div className="flex h-[50vh] flex-end relative justify-end flex-col w-full pb-10 text-black">
+
+                <div className="h-full absolute top-0 left-0 w-full" ref={endclz}>
+                  <img src="/endclz.png" alt="" className="w-full h-full"/>
+                </div>
+
+                <div className="flex h-[50vh] z-20 flex-end relative justify-end flex-col w-full pb-10 text-black" ref={endtxt}>
                   <div className="flex rounded-lg p-8 gap-6 justify-center flex-col items-start  text-black min-h-[150px] overflow-hidden">
                     <button className="border border-[#8A8472] rounded-xl text-lg text-[#8A8472] px-5 py-1">
                       Our Vision
@@ -381,6 +406,7 @@ const About = () => {
                     </p>
                   </div>
                 </div>
+
               </div>
               <div className="h-full relative items-stretch justify-stretch w-[48%]">
                 <div className="w-full h-full" ref={endImgctn}>
