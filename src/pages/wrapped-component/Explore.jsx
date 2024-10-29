@@ -50,7 +50,7 @@ const Explore = ({ horizontalTl }) => {
     >
       <div ref={boxRef} className="min-w-screen h-full relative flex justify-center items-center">
         <h1 className="text-4xl sm:text-6xl lg:text-[120px] text-white font-poppins z-20 font-medium text-center">
-          LET'S EXPLORE
+          LET&apos;S EXPLORE
         </h1>
         <div className="hidden lg:block">
           <div className="card absolute overflow-hidden z-10 
@@ -104,7 +104,7 @@ const Explore = ({ horizontalTl }) => {
         ref={boxARef}
       >
         <h1 className="text-[120px] text-black font-poppins z-40 font-medium">
-          LET'S EXPLORE
+          LET&apos;S EXPLORE
         </h1>
 
         <div className="card absolute overflow-hidden z-10 

@@ -21,7 +21,7 @@ const Footer = () => {
 
         {/* Let's Chat Section */}
         <div className="">
-         <h3 className='text-[64px] md:text-[48px] sm:text-[36px] tracking-wide text-white font-bold font-adamina'>Let's Chat</h3>
+         <h3 className='text-[64px] md:text-[48px] sm:text-[36px] tracking-wide text-white font-bold font-adamina'>Let&apos;s Chat</h3>
         </div>
       </div>
 
