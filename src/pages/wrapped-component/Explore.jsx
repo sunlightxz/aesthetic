@@ -51,32 +51,68 @@ const Explore = ({ horizontalTl }) => {
     <div
       data-pin="true"
       ref={boxHolderRef} 
-      className={`h-screen w-screen relative flex justify-center items-center flex-shrink-0 bg-black px-[140px]`}
+      className="h-screen w-screen relative flex justify-center items-center flex-shrink-0 bg-black px-4 sm:px-8 lg:px-[140px]"
     >
-      <div ref={boxRef}  className="min-w-screen h-full relative flex justify-center items-center">
-        <h1 className="md:text-[120px] sm:text-6xl text-4xl  text-white font-poppins z-20 font-medium text-center">
-          LET’S EXPLORE</h1>
-        <div className="card absolute overflow-hidden z-10 left-[13%] bottom-[67%] rounded-lg w-[200px] h-[218px]" id="card-1">
-          <img src="/exp1.png" alt="" />
-        </div>
-        <div className="card absolute overflow-hidden top-[61%] left-[45%] rounded-lg w-[200px] h-[218px]" id="card-2">
-          <img src="/exp3.png" alt="" />
-        </div>
-        <div className="card absolute overflow-hidden left-[80%] bottom-[20%] rounded-lg w-[347px] h-[429px]" id="card-3">
-          <img src="/exp2.png" alt="" />
+      <div ref={boxRef} className="min-w-screen h-full relative flex justify-center items-center">
+        <h1 className="text-4xl sm:text-6xl lg:text-[120px] text-white font-poppins z-20 font-medium text-center">
+          LET'S EXPLORE
+        </h1>
+        <div className="hidden lg:block">
+          <div className="card absolute overflow-hidden z-10 
+            left-[13%] bottom-[67%] 
+            rounded-lg w-[200px] h-[218px]" 
+            id="card-1"
+          >
+            <img src="/exp1.png" alt="" className="w-full h-full object-cover" />
+          </div>
+
+          <div className="card absolute overflow-hidden 
+            top-[61%] left-[45%] 
+            rounded-lg w-[200px] h-[218px]" 
+            id="card-2"
+          >
+            <img src="/exp3.png" alt="" className="w-full h-full object-cover" />
+          </div>
+
+          <div className="card absolute overflow-hidden 
+            left-[80%] bottom-[20%] 
+            rounded-lg w-[347px] h-[429px]" 
+            id="card-3"
+          >
+            <img src="/exp2.png" alt="" className="w-full h-full object-cover" />
+          </div>
         </div>
       </div>
 
-      <div className="min-w-screen w-full absolute z-30 flex justify-center items-center h-full reveal2 bg-white" ref={boxARef} >
-        <h1 className="md:text-[120px] sm:text-6xl text-4xl  text-black font-poppins z-40 font-medium">LET’S EXPLORE</h1>
-        <div className="card absolute overflow-hidden z-10 left-[24%] bottom-[67.3%] rounded-lg w-[200px] h-[218px]" id="card-1">
-          <img src="/exc2.png" alt="" />
+      <div className="hidden lg:flex min-w-screen w-full absolute z-30 justify-center items-center h-full reveal2 bg-white" 
+        ref={boxARef}
+      >
+        <h1 className="text-[120px] text-black font-poppins z-40 font-medium">
+          LET'S EXPLORE
+        </h1>
+
+        <div className="card absolute overflow-hidden z-10 
+          left-[24%] bottom-[67.3%] 
+          rounded-lg w-[200px] h-[218px]" 
+          id="card-1"
+        >
+          <img src="/exc2.png" alt="" className="w-full h-full object-cover" />
         </div>
-        <div className="card absolute overflow-hidden top-[61%] left-[45%] rounded-lg w-[200px] h-[218px]" id="card-2">
-          <img src="/exc3.png" alt="" />
+
+        <div className="card absolute overflow-hidden 
+          top-[61%] left-[45%] 
+          rounded-lg w-[200px] h-[218px]" 
+          id="card-2"
+        >
+          <img src="/exc3.png" alt="" className="w-full h-full object-cover" />
         </div>
-        <div className="card absolute overflow-hidden left-[70%] bottom-[20%] rounded-lg w-[347px] h-[429px]" id="card-3">
-          <img src="/exc1.png" alt="" />
+
+        <div className="card absolute overflow-hidden 
+          left-[70%] bottom-[20%] 
+          rounded-lg w-[347px] h-[429px]" 
+          id="card-3"
+        >
+          <img src="/exc1.png" alt="" className="w-full h-full object-cover" />
         </div>
       </div>
     </div>
