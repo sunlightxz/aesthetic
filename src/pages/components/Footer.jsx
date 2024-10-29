@@ -29,10 +29,10 @@ const Footer = () => {
       <div className='md:h-[10vh] h-[15vh] border-t border-gray-400 w-full'>
         <div className="flex flex-col md:flex-row justify-between items-center w-full h-full md:px-[40px] px-[10px] py-4 md:py-0">
           {/* Social Links */}
-          <div className="w-full md:w-5/12 flex justify-between items-center mb-4 md:mb-0">
-            <a className='md:text-2xl sm:text-xl text-lg text-[#EAEAEA] hover:text-gray-300 transition-colors' href=""><span>Twitter</span></a>
-            <a className='md:text-2xl sm:text-xl text-lg text-[#EAEAEA] hover:text-gray-300 transition-colors' href=""><span>Github</span></a>
-            <a className='md:text-2xl sm:text-xl text-lg text-[#EAEAEA] hover:text-gray-300 transition-colors' href=""><span>Instagram</span></a>
+          <div className="w-full md:w-5/12 flex  gap-5 items-center mb-4 md:mb-0">
+            <a className='md:text-2xl sm:text-xl text-lg text-[#EAEAEA] hover:text-gray-300 transition-colors' href="https://x.com/AmineAsfar"><span>Twitter</span></a>
+            <a className='md:text-2xl sm:text-xl text-lg text-[#EAEAEA] hover:text-gray-300 transition-colors' href="https://github.com/sunlightxz"><span>Github</span></a>
+            <a className='md:text-2xl sm:text-xl text-lg text-[#EAEAEA] hover:text-gray-300 transition-colors' href="https://www.instagram.com/portugas_d.amine/"><span>Instagram</span></a>
           </div>
 
           {/* Contact Email */}
