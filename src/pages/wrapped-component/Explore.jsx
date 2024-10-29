@@ -1,50 +1,45 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import Image from 'next/image';
 
 const Explore = ({ horizontalTl }) => {
   const boxHolderRef = useRef(null);
   const boxRef = useRef(null);
-  const boxARef =useRef(null);
+  const boxARef = useRef(null);
+
   useEffect(() => {
- if(horizontalTl){
+    if(horizontalTl){
+      const boxRevealTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: horizontalTl.current,
+          start: "25%", 
+          end: "28%",      
+          scrub: 4,
+        },
+      });
 
-  const boxRevealTl = gsap.timeline({
-    scrollTrigger: {
-      trigger: horizontalTl.current,
-      start: "25%", 
-      end: "28%",      
-      scrub: 4,
-      markers: true ,
-    },
-  });
-
-  boxRevealTl.fromTo('.card',  {
-    rotation: 15,
-   
-    y: 50
-  },
-  {
-    rotation: 0,
-
-    y: 0,
-    duration: 1,
-    ease: "power2.out"
-  },)
-  boxRevealTl.fromTo(boxARef.current, 
-    {
-      clipPath: "inset(0px 0px 0px 100%)",
-    },
-    {
-      clipPath: "inset(0px 0px 0px 0%)",
-      ease: "power2.inOut",
+      boxRevealTl.fromTo('.card',  {
+        rotation: 15,
+        y: 50
+      },
+      {
+        rotation: 0,
+        y: 0,
+        duration: 1,
+        ease: "power2.out"
+      },)
+      .fromTo(boxARef.current, 
+        {
+          clipPath: "inset(0px 0px 0px 100%)",
+        },
+        {
+          clipPath: "inset(0px 0px 0px 0%)",
+          ease: "power2.inOut",
+        },
+        0.2
+      );
     }
-    ,0.2
-  );
-
-  
- }
-   
   }, [horizontalTl]);
 
   return (
@@ -63,7 +58,14 @@ const Explore = ({ horizontalTl }) => {
             rounded-lg w-[200px] h-[218px]" 
             id="card-1"
           >
-            <img src="/exp1.png" alt="" className="w-full h-full object-cover" />
+            <div className="relative w-full h-full">
+              <Image
+                src="/exp1.png"
+                alt="Explore 1"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
 
           <div className="card absolute overflow-hidden 
@@ -71,7 +73,14 @@ const Explore = ({ horizontalTl }) => {
             rounded-lg w-[200px] h-[218px]" 
             id="card-2"
           >
-            <img src="/exp3.png" alt="" className="w-full h-full object-cover" />
+            <div className="relative w-full h-full">
+              <Image
+                src="/exp3.png"
+                alt="Explore 3"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
 
           <div className="card absolute overflow-hidden 
@@ -79,7 +88,14 @@ const Explore = ({ horizontalTl }) => {
             rounded-lg w-[347px] h-[429px]" 
             id="card-3"
           >
-            <img src="/exp2.png" alt="" className="w-full h-full object-cover" />
+            <div className="relative w-full h-full">
+              <Image
+                src="/exp2.png"
+                alt="Explore 2"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -96,7 +112,14 @@ const Explore = ({ horizontalTl }) => {
           rounded-lg w-[200px] h-[218px]" 
           id="card-1"
         >
-          <img src="/exc2.png" alt="" className="w-full h-full object-cover" />
+          <div className="relative w-full h-full">
+            <Image
+              src="/exc2.png"
+              alt="Exclusive 2"
+              fill
+              className="object-cover"
+            />
+          </div>
         </div>
 
         <div className="card absolute overflow-hidden 
@@ -104,7 +127,14 @@ const Explore = ({ horizontalTl }) => {
           rounded-lg w-[200px] h-[218px]" 
           id="card-2"
         >
-          <img src="/exc3.png" alt="" className="w-full h-full object-cover" />
+          <div className="relative w-full h-full">
+            <Image
+              src="/exc3.png"
+              alt="Exclusive 3"
+              fill
+              className="object-cover"
+            />
+          </div>
         </div>
 
         <div className="card absolute overflow-hidden 
@@ -112,7 +142,14 @@ const Explore = ({ horizontalTl }) => {
           rounded-lg w-[347px] h-[429px]" 
           id="card-3"
         >
-          <img src="/exc1.png" alt="" className="w-full h-full object-cover" />
+          <div className="relative w-full h-full">
+            <Image
+              src="/exc1.png"
+              alt="Exclusive 1"
+              fill
+              className="object-cover"
+            />
+          </div>
         </div>
       </div>
     </div>

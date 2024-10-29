@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Explore from "../wrapped-component/Explore";
 import Products from "../wrapped-component/Products";
+import Image from "next/image";
 
 // Register ScrollTrigger with GSAP
 gsap.registerPlugin(ScrollTrigger);
@@ -42,7 +43,6 @@ const About = () => {
         end: "380%",
         scrub: true,
         pin: true,
-        markers: true,
       },
     });
 
@@ -52,32 +52,36 @@ const About = () => {
       ease: "power2.inOut",
       duration: 2,
     })
-    .to(imgHolderRef.current, {
-      scale: 1,
-      width: "50%",
-      duration: 1.3,
-      ease: "power2.inOut",
-    })
-    .to(horizontalSectionRef.current, {
-      x: "-50vw",
-      ease: "power2.inOut",
-      duration: 1,
-    }, "<")
-    .to(heroScroll.current, {
-      x: "-150vw",
-      ease: "power2.inOut",
-      duration: 2,
-    })
-    .to(scrollContainer.current, {
-      x: "-100vw",
-      ease: "power2.inOut",
-    })
-    .fromTo(
-      imgScoll.current,
-      { scale: 0.4 },
-      { scale: 1, duration: 1.5, ease: "power2.inOut" },
-      "<"
-    );
+      .to(imgHolderRef.current, {
+        scale: 1,
+        width: "50%",
+        duration: 1.3,
+        ease: "power2.inOut",
+      })
+      .to(
+        horizontalSectionRef.current,
+        {
+          x: "-50vw",
+          ease: "power2.inOut",
+          duration: 1,
+        },
+        "<"
+      )
+      .to(heroScroll.current, {
+        x: "-150vw",
+        ease: "power2.inOut",
+        duration: 2,
+      })
+      .to(scrollContainer.current, {
+        x: "-100vw",
+        ease: "power2.inOut",
+      })
+      .fromTo(
+        imgScoll.current,
+        { scale: 0.4 },
+        { scale: 1, duration: 1.5, ease: "power2.inOut" },
+        "<"
+      );
 
     // Only run img1Ref and img2Ref related animations on large screens
     if (isLargeScreen) {
@@ -87,144 +91,146 @@ const About = () => {
         { x: "100%", duration: 1.5, ease: "power2.inOut" },
         "<"
       )
-      .fromTo(
-        [img1Ref.current, img2Ref.current],
-        { x: "100%", opacity: 0 },
-        {
-          x: "0%",
-          opacity: 1,
-          duration: 1.5,
+        .fromTo(
+          [img1Ref.current, img2Ref.current],
+          { x: "100%", opacity: 0 },
+          {
+            x: "0%",
+            opacity: 1,
+            duration: 1.5,
+            ease: "power2.inOut",
+            stagger: 0.2,
+          }
+        )
+        .fromTo(
+          [img1Ref.current, img2Ref.current],
+          { scale: 0.4 },
+          { scale: 1, duration: 1, ease: "power2.inOut", stagger: 0.2 }
+        )
+        .to(img2Ref.current, {
+          y: "-20%",
+          duration: 1,
           ease: "power2.inOut",
-          stagger: 0.2,
-        }
-      )
-      .fromTo(
-        [img1Ref.current, img2Ref.current],
-        { scale: 0.4 },
-        { scale: 1, duration: 1, ease: "power2.inOut", stagger: 0.2 }
-      )
-      .to(img2Ref.current, { 
-        y: "-20%", 
-        duration: 1, 
-        ease: "power2.inOut" 
-      });
+        });
     }
 
     // Continue with other animations
-    tl
-   .fromTo(
+    tl.fromTo(
       DescripRef.current,
       { y: "100%", opacity: 0 },
       { y: "0%", opacity: 1, duration: 1.5, ease: "power2.inOut" }
     )
-    .fromTo(
-      [imx1Ref.current, imx2Ref.current],
-      {
-        clipPath: "inset(100% 0px 0px )",
-      },
-      {
-        clipPath: "inset(0% 0px 0px )",
-        ease: "power2.inOut",
-      }
-    )
-    .to(mansonRef.current, {
-      y: "-100%",
-      duration: 2,
-      ease: "power2.inOut",
-    })
-    .to(
-      [img1Ref.current, img2Ref.current, DescripRef.current],
-      {
-        y: "-950px",
-        duration: 1.5,
-        ease: "power2.inOut",
-        stagger: 0.2,
-      },
-      "<"
-    )
-    .fromTo(
-      darkbox.current,
-      {
-        x:isMobile ? "0%" : "-350%",
-      },
-      {
-        x: "0px",
-        duration: 1.6,
-      }
-    )
-    .fromTo(
-      imgzmanson.current,
-      { y: "40%" },
-      { y: "0", ease: "power2.inOut" },
-      "<"
-    )
-    .to(mansonRef.current, {
-      x: "-100vw",
-      ease: "power2.inOut",
-      duration: 2,
-    })
-    .to(
-      imgScoll.current,
-      {
-        opacity: isMobile ? 1 : 0,
-      },
-      17.2
-    );
-
-    const updateAnimations = () => {
-
-      if (isLargeScreen) {
-      tl.fromTo(
-        endImgRef.current,
+      .fromTo(
+        [imx1Ref.current, imx2Ref.current],
         {
-          width: isMobile ? "75%" : "55%",
-          x: isMobile ? 300 : isTablet ? 600 : 926,
-          scale: 0.4,
-          transformOrigin: "100% 0% ",
+          clipPath: "inset(100% 0px 0px )",
         },
         {
-          width: "100%",
-          x: 0,
-          scale: 1,
-          duration: 1.5,
+          clipPath: "inset(0% 0px 0px )",
           ease: "power2.inOut",
         }
-      ).fromTo(
-        endImgctn.current,
+      )
+      .to(mansonRef.current, {
+        y: "-100%",
+        duration: 2,
+        ease: "power2.inOut",
+      })
+      .to(
+        [img1Ref.current, img2Ref.current, DescripRef.current],
         {
-          width: "25%" ,
-          x: isMobile ? 130 : isTablet ? 250 : 580,
-        },
-        {
-          width: "100%",
-          x: "0",
+          y: "-950px",
           duration: 1.5,
           ease: "power2.inOut",
+          stagger: 0.2,
         },
         "<"
       )
       .fromTo(
-        endclz.current, { 
-          y: "1100px"
-        } ,
+        darkbox.current,
         {
-       y: "0px"
-       , duration : 1.5
-        })
-        .fromTo(
-          endtxt.current, { 
-            x: "0px"
-          } ,
-          {
-     x: "-800px" ,
-     duration : 1.2 ,
-          }
-          ,"<"
+          x: isMobile ? "0%" : "-350%",
+        },
+        {
+          x: "0px",
+          duration: 1.6,
+        }
       )
-    }
-    }
+      .fromTo(
+        imgzmanson.current,
+        { y: "40%" },
+        { y: "0", ease: "power2.inOut" },
+        "<"
+      )
+      .to(mansonRef.current, {
+        x: "-100vw",
+        ease: "power2.inOut",
+        duration: 2,
+      })
+      .to(
+        imgScoll.current,
+        {
+          opacity: isMobile ? 1 : 0,
+        },
+        17.2
+      );
+
+    const updateAnimations = () => {
+      if (isLargeScreen) {
+        tl.fromTo(
+          endImgRef.current,
+          {
+            width: isMobile ? "75%" : "55%",
+            x: isMobile ? 300 : isTablet ? 600 : 926,
+            scale: 0.4,
+            transformOrigin: "100% 0% ",
+          },
+          {
+            width: "100%",
+            x: 0,
+            scale: 1,
+            duration: 1.5,
+            ease: "power2.inOut",
+          }
+        )
+          .fromTo(
+            endImgctn.current,
+            {
+              width: "25%",
+              x: isMobile ? 130 : isTablet ? 250 : 580,
+            },
+            {
+              width: "100%",
+              x: "0",
+              duration: 1.5,
+              ease: "power2.inOut",
+            },
+            "<"
+          )
+          .fromTo(
+            endclz.current,
+            {
+              y: "1100px",
+            },
+            {
+              y: "0px",
+              duration: 1.5,
+            }
+          )
+          .fromTo(
+            endtxt.current,
+            {
+              x: "0px",
+            },
+            {
+              x: "-800px",
+              duration: 1.2,
+            },
+            "<"
+          );
+      }
+    };
     setHorizontalTl(tl);
-    window.addEventListener('resize', updateAnimations);
+    window.addEventListener("resize", updateAnimations);
     updateAnimations();
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
@@ -273,51 +279,68 @@ const About = () => {
         <div className="flex h-[200vh]  flex-col overflow-hidden relative bgbglue">
           <div className="w-screen h-screen flex justify-center items-center bg-white">
             <div className="w-full h-full flex justify-center items-center relative">
-              <img
-                src="/scale.png"
-                alt=""
-                className="w-full h-full object-cover"
-                ref={imgScoll}
-              />
+              <div className="relative w-full h-full">
+                <Image
+                  src="/scale.png"
+                  alt="Scale"
+                  fill
+                  ref={imgScoll}
+                  className="object-cover"
+                  priority
+                />
+              </div>
               <div className="absolute inset-0 flex">
                 <div
                   className="flex-1 lg:flex hidden justify-center items-center relative"
                   ref={img1Ref}
                 >
-                  <img
-                    src="slac1.png"
-                    className="h-full w-full object-cover"
-                    alt=""
-                  />
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/slac1.png"
+                      alt="Slac 1"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
                   <div
                     className="absolute w-full h-full overflow-hidden flex justify-center"
                     ref={imx1Ref}
                   >
-                    <img
-                      src="/imx1.png"
-                      className="h-full absolute bottom-0 w-full object-cover"
-                      alt=""
-                    />
+                    <div className="relative w-full h-full">
+                      <Image
+                        src="/imx1.png"
+                        alt="Imx 1"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
                   </div>
                 </div>
+
                 <div
                   className="flex-1 lg:flex hidden justify-center items-center relative"
                   ref={img2Ref}
                 >
-                  <img
-                    src="slac2.png"
-                    className="h-full w-full object-cover"
-                    alt=""
-                  />
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/slac2.png"
+                      alt="Slac 2"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
                   <div
                     className="absolute w-full h-full overflow-hidden flex justify-center"
                     ref={imx2Ref}
                   >
-                    <img
-                      src="/imx2.png"
-                      className="h-full absolute bottom-0 w-full object-cover"
-                      alt=""
-                    />
+                    <div className="relative w-full h-full">
+                      <Image
+                        src="/imx2.png"
+                        alt="Imx 2"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
                   </div>
                 </div>
 
@@ -331,10 +354,17 @@ const About = () => {
                     </h3>
                     <p className="mb-4">
                       Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                      Soluta eos cumque eius accusamus nesciunt, veniam
-                      dignissimos optio facilis id quasi.
+                      Soluta eos cumque eius accusamus nesciunt.
                     </p>
-                    <img src="/sinjab.png" alt="" className="w-full" />
+                    <div className="relative w-full h-[200px]">
+                      <Image
+                        src="/sinjab.png"
+                        alt="Sinjab"
+                        className="object-contain"
+                        width={300}
+                        height={200}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -346,21 +376,36 @@ const About = () => {
           >
             <div className="flex w-screen md:pr-5 px-5 justify-center items-center h-full relative border-gray-400 border-x">
               <div className="md:w-[35%] w-0 flex flex-col  h-full">
-                <img className=" w-full h-[50%]" src="/manso1.png" alt="" />
-                <img
-                  className="manso2 w-full h-[50%]"
-                  src="/manso2.png"
-                  alt=""
-                  ref={imgzmanson}
-                />
+          
+                  <Image
+                    src="/man1.png"
+                    alt=""
+                    layout="responsive"
+                    width={450}
+                    height={500}
+                  />
+                  <Image
+                    src="/manso2.png"
+                    alt=""
+                    layout="responsive"
+                    width={450}
+                    height={500}
+                    ref={imgzmanson}
+                  />
+       
               </div>
               <div className="md:w-[35%] w-0 flex justify-center items-center">
-                <img
-                  src="/manso3.png"
-                  alt=""
-                  className="w-[75%]"
-                  ref={imgmanson}
-                />
+                <div className="relative w-[75%] h-full">
+                  <Image
+                    src="/manso3.png"
+                    alt="Manso 3"
+                    width={500}
+                    layout="responsive"
+                    height={500}
+                    className="object-cover"
+                    ref={imgmanson}
+                  />
+                </div>
               </div>
               <div className="md:w-[30%] w-full">
                 <div
@@ -383,21 +428,36 @@ const About = () => {
 
             <div className="w-screen flex h-full relative  ed">
               <div className="h-full  relative items-stretch justify-stretch md:w-[52%] w-full">
-               
-                <div className="relative md:h-[50vh] h-0 w-full overflow-hidden"ref={endImgRef}>
-                  <img
-                    // Add this ref
+                <div
+                  className="relative md:h-[50vh] h-0 w-full overflow-hidden"
+                  ref={endImgRef}
+                >
+                  <Image
                     src="/end.png"
-                    alt=""
-                    className=" object-cover w-full"
+                    alt="End"
+                    fill
+                    className="object-cover"
                   />
                 </div>
 
-                <div className="h-full absolute top-0 left-0 md:w-full " ref={endclz}>
-                  <img src="/endclz.png" alt="" className="w-full h-full"/>
+                <div
+                  className="h-full absolute top-0 left-0 md:w-full "
+                  ref={endclz}
+                >
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/endclz.png"
+                      alt="End CLZ"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
                 </div>
 
-                <div className="flex md:h-[50vh] md:p-0 p-4 h-full z-20 flex-end relative md:justify-end justify-center flex-col w-full pb-10 text-black" ref={endtxt}>
+                <div
+                  className="flex md:h-[50vh] md:p-0 p-4 h-full z-20 flex-end relative md:justify-end justify-center flex-col w-full pb-10 text-black"
+                  ref={endtxt}
+                >
                   <div className="flex rounded-lg md:p-8 p-2 gap-6 justify-center flex-col items-start  text-black min-h-[150px] md:bg-transparent bg-white overflow-hidden">
                     <button className="border border-[#8A8472] rounded-xl text-lg text-[#8A8472] px-5 py-1">
                       Our Vision
@@ -411,15 +471,17 @@ const About = () => {
                     </p>
                   </div>
                 </div>
-
               </div>
               <div className="h-full relative items-stretch justify-stretch md:w-[48%] w-0">
                 <div className="w-full h-full" ref={endImgctn}>
-                  <img
-                    src="/endctn.png"
-                    alt=""
-                    className="h-full object-cover w-full"
-                  />
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/endctn.png"
+                      alt="End CTN"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
                 </div>
               </div>
             </div>

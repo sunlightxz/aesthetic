@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 
 const Products = () => {
   return (
@@ -10,10 +11,11 @@ const Products = () => {
           <div className="flex flex-col gap-4 sm:gap-[30px] w-full">
             <span className="text-white text-lg sm:text-xl font-medium">CityLocks</span>
             <div className="relative w-full aspect-[3/4] overflow-hidden">
-              <img 
+              <Image 
                 src="/prj1.png" 
-                alt="CityLocks Project" 
-                className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                alt="CityLocks Project 1" 
+                fill
+                className="object-cover transition-transform duration-300 hover:scale-105"
               />
             </div>
           </div>
@@ -22,10 +24,11 @@ const Products = () => {
           <div className="flex flex-col gap-4 sm:gap-[30px] w-full">
             <span className="text-white text-lg sm:text-xl font-medium">CityLocks</span>
             <div className="relative w-full aspect-[3/4] overflow-hidden">
-              <img 
+              <Image 
                 src="/prj2.png" 
-                alt="CityLocks Project" 
-                className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                alt="CityLocks Project 2" 
+                fill
+                className="object-cover transition-transform duration-300 hover:scale-105"
               />
             </div>
           </div>
@@ -34,10 +37,11 @@ const Products = () => {
           <div className="flex flex-col gap-4 sm:gap-[30px] w-full">
             <span className="text-white text-lg sm:text-xl font-medium">CityLocks</span>
             <div className="relative w-full aspect-[3/4] overflow-hidden">
-              <img 
+              <Image 
                 src="/prj3.png" 
-                alt="CityLocks Project" 
-                className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                alt="CityLocks Project 3" 
+                fill
+                className="object-cover transition-transform duration-300 hover:scale-105"
               />
             </div>
           </div>
@@ -46,10 +50,11 @@ const Products = () => {
           <div className="flex flex-col gap-4 sm:gap-[30px] w-full">
             <span className="text-white text-lg sm:text-xl font-medium">CityLocks</span>
             <div className="relative w-full aspect-[3/4] overflow-hidden">
-              <img 
+              <Image 
                 src="/prj4.png" 
-                alt="CityLocks Project" 
-                className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                alt="CityLocks Project 4" 
+                fill
+                className="object-cover transition-transform duration-300 hover:scale-105"
               />
             </div>
           </div>
