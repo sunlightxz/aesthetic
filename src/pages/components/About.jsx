@@ -71,7 +71,13 @@ const About = () => {
     .to(scrollContainer.current, {
       x: "-100vw",
       ease: "power2.inOut",
-    });
+    })
+    .fromTo(
+      imgScoll.current,
+      { scale: 0.4 },
+      { scale: 1, duration: 1.5, ease: "power2.inOut" },
+      "<"
+    );
 
     // Only run img1Ref and img2Ref related animations on large screens
     if (isLargeScreen) {
@@ -106,12 +112,7 @@ const About = () => {
 
     // Continue with other animations
     tl
-    .fromTo(
-      imgScoll.current,
-      { scale: 0.4 },
-      { scale: 1, duration: 1.5, ease: "power2.inOut" },
-      "<"
-    ).fromTo(
+   .fromTo(
       DescripRef.current,
       { y: "100%", opacity: 0 },
       { y: "0%", opacity: 1, duration: 1.5, ease: "power2.inOut" }
